@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\kelas\{KategoriRequest};
-use App\Repositories\{Kategori,Kelas};
+use App\Repositories\Kategori;
+use App\Repositories\Kelas;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
