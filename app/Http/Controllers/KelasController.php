@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\kelas\{KategoriRequest};
-use App\Repositories\Kategori;
+use App\Repositories\Category;
 use App\Repositories\Kelas;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class KelasController extends Controller
     private $kategori;
     private $kelas;
 
-    public function __construct(Kategori $kt,Kelas $kl){
+    public function __construct(Category $kt,Kelas $kl){
         $this->kategori = $kt;
         $this->kelas = $kl;
     }
