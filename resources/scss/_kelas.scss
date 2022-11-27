@@ -1,0 +1,24 @@
+.button{
+    width: 100px;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    padding: 2px 2px;
+    border-radius: 4px;
+    border: solid 2px #2666CF;
+    box-shadow: 4px 4px #2666CF;
+    transition: transform 50ms, box-shadow 50ms;
+    &:hover{
+        transform: translate(2px,2px);
+        background-color: #2666CF;
+        color: white;
+        border: solid 2px #2666CF;
+        box-shadow: 2px 2px #2666CF;
+    }
+}
+#cardCategory{
+    @include small{
+            margin-right: 5px;
+    }
+}
