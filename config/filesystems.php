@@ -36,6 +36,12 @@ return [
             'throw' => false,
         ],
 
+        'parent_disk' => [
+            'driver' => 'local',
+            'root' => env('IMG_STORE'),
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
