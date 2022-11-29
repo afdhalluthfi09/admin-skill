@@ -28,7 +28,10 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-    @vite(['resources/scss/app.scss'])
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/codemirror/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/codemirror/theme/monokai.css') }}">
+    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -81,7 +84,6 @@
        
     </div>
     
-
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -116,5 +118,10 @@
     <script src="{{ asset('dist/js/demo.js') }} "></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('dist/js/pages/dashboard.js') }} "></script>
+    <script src="{{ asset('plugins/codemirror/codemirror.js') }}"></script>
+    <script src="{{ asset('plugins/codemirror/mode/css/css.js') }}"></script>
+    <script src="{{ asset('plugins/codemirror/mode/xml/xml.js') }}"></script>
+    <script src="{{ asset('plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
     @stack('scripts')
+   
 </body>

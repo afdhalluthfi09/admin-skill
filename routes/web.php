@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Http\Controllers\{KelasController};
+use App\Http\Controllers\{ArtikelController, KelasController, UsersController};
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +39,20 @@ Route::prefix('kelas')->middleware('auth')->group(function () {
     Route::post('/addKelas', [KelasController::class, 'addKelas'])->name('kelas.addKelas');
     Route::get('/listkelas',[KelasController::class,'showListKelas'])->name('kelas.listkelas');
     Route::get('/datail',[KelasController::class,'detailEvent'])->name('kelas.detail');
+});
+
+Route::prefix('artikel')->middleware('auth')->group(function(){
+    Route::get('/',[ArtikelController::class,'index'])->name('artikel');
+    Route::get('add',[ArtikelController::class,'addArtikel'])->name('artikel.add');
+    Route::get('edit/{slug}',[ArtikelController::class,'editArtikel'])->name('artikel.edit');
+
+    //prosess artikel
+    Route::post('addArtikel',[ArtikelController::class,'add'])->name('artikel.addArtikel');
+    Route::post('editArtikel/{id}',[ArtikelController::class,'edit'])->name('artikel.editArtikel');
+    Route::get('deleteArtikel',[ArtikelController::class,'delete'])->name('artikel.deleteArtikel');
+});
+Route::prefix('users')->middleware('auth')->group(function(){
+    Route::get('', [UsersController::class, 'index'])->name('users.index');
 });
 
 require __DIR__.'/auth.php';

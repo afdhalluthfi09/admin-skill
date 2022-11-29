@@ -37,7 +37,7 @@
                       </div>
                     </div>
                   </div>
-            </div>
+              </div>
         </section>
     </div>
     <div class="modal-footer justify-content-between">

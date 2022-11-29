@@ -3,23 +3,31 @@
     "file": "assets/bg_hp.7128951a.png",
     "src": "resources/img/bg_hp.png"
   },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons.966620f9.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
+  },
   "resources/img/bg_dekstop.png": {
     "file": "assets/bg_dekstop.c0a523fe.png",
     "src": "resources/img/bg_dekstop.png"
   },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
+    "file": "assets/bootstrap-icons.c6569d46.woff",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
+  },
   "resources/js/app.js": {
-    "file": "assets/app.0fe24f38.js",
+    "file": "assets/app.cc21d397.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
-  "resources/scss/app.scss": {
-    "file": "assets/app.59225a1d.css",
-    "src": "resources/scss/app.scss",
+  "resources/css/app.css": {
+    "file": "assets/app.489b72c8.css",
+    "src": "resources/css/app.css",
     "isEntry": true
   },
-  "resources/css/app.css": {
-    "file": "assets/app.89c6f564.css",
-    "src": "resources/css/app.css",
+  "resources/scss/app.scss": {
+    "file": "assets/app.05ccf0be.css",
+    "src": "resources/scss/app.scss",
     "isEntry": true
   }
 }
