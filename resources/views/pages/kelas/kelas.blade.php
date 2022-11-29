@@ -43,7 +43,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">
+                  <a href="{{ route('kelas.listkelas') }}" class="small-box-footer">
                     Lihat Detail <i class="fas fa-arrow-circle-right"></i>
                   </a>
                 </div>

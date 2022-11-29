@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\{KelasController};
@@ -36,6 +37,8 @@ Route::prefix('kelas')->middleware('auth')->group(function () {
     //prosess kelas
     Route::get('/{id}/{slug}', [KelasController::class, 'show'])->name('kelas.show');
     Route::post('/addKelas', [KelasController::class, 'addKelas'])->name('kelas.addKelas');
+    Route::get('/listkelas',[KelasController::class,'showListKelas'])->name('kelas.listkelas');
+    Route::get('/datail',[KelasController::class,'detailEvent'])->name('kelas.detail');
 });
 
 require __DIR__.'/auth.php';

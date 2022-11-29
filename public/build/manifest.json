@@ -1,16 +1,24 @@
 {
+  "resources/img/bg_hp.png": {
+    "file": "assets/bg_hp.7128951a.png",
+    "src": "resources/img/bg_hp.png"
+  },
+  "resources/img/bg_dekstop.png": {
+    "file": "assets/bg_dekstop.c0a523fe.png",
+    "src": "resources/img/bg_dekstop.png"
+  },
   "resources/js/app.js": {
     "file": "assets/app.0fe24f38.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/scss/app.scss": {
-    "file": "assets/app.45c5436c.css",
+    "file": "assets/app.59225a1d.css",
     "src": "resources/scss/app.scss",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.a6070819.css",
+    "file": "assets/app.89c6f564.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

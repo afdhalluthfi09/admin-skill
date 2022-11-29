@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\kelas\{KategoriRequest};
 use App\Repositories\Category;
 use App\Repositories\Kelas;
+use App\Repositories\Youtube;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -12,10 +13,12 @@ class KelasController extends Controller
     //
     private $kategori;
     private $kelas;
+    private $youtube;
 
-    public function __construct(Category $kt,Kelas $kl){
+    public function __construct(Category $kt,Kelas $kl,Youtube $yt){
         $this->kategori = $kt;
         $this->kelas = $kl;
+        $this->youtube = $yt;
     }
 
     // proses category kelas
@@ -55,5 +58,16 @@ class KelasController extends Controller
         $this->kelas->addKelas($request);
         return redirect()->back();
         
+    }
+    public function showListKelas() {
+        return view('pages.kelas.listkelas',with([
+            'yt' =>$this->youtube->getListYoutube(),
+        ]));
+    }
+    public function detailEvent()
+    {
+        return view('pages.kelas.detail',with([
+            'youtube'=>collect($this->youtube->getDetailEvent())
+        ]));
     }
 }
