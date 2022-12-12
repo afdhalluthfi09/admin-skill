@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Reposotories\Artikel;
+use Repositories\Artikel;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
