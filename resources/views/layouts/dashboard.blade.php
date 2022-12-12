@@ -26,12 +26,10 @@
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/codemirror/codemirror.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/codemirror/theme/monokai.css') }}">
-    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    
+    <link rel="stylesheet" href="{{asset('summernote/summernote-bs4.css')}}">
+    
+    @vite(['resources/scss/app.css','resources/scss/app.scss'])
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -87,7 +85,7 @@
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    {{-- <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script> --}}
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
@@ -108,8 +106,6 @@
     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }} "></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }} "></script>
-    <!-- Summernote -->
-    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }} "></script>
     <!-- overlayScrollbars -->
     <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }} "></script>
     <!-- AdminLTE App -->
@@ -118,10 +114,7 @@
     <script src="{{ asset('dist/js/demo.js') }} "></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('dist/js/pages/dashboard.js') }} "></script>
-    <script src="{{ asset('plugins/codemirror/codemirror.js') }}"></script>
-    <script src="{{ asset('plugins/codemirror/mode/css/css.js') }}"></script>
-    <script src="{{ asset('plugins/codemirror/mode/xml/xml.js') }}"></script>
-    <script src="{{ asset('plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ asset('summernote/summernote-bs4.js') }}"></script>
     @stack('scripts')
    
 </body>

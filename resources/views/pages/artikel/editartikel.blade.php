@@ -86,21 +86,7 @@
     @push('scripts')
         <script>
             $(document).ready(function(){
-                // $('#summernote').summernote()
-                $('#summernote').summernote({
-                    toolbar: [
-                        ['style', ['style']],
-                        ['font', ['bold', 'underline', 'clear']],
-                        ['fontname', ['fontname']],
-                        ['color', ['color']],
-                        ['para', ['ul', 'ol', 'paragraph']],
-                        ['table', ['table']],
-                        ['insert', ['link', 'picture', 'video']],
-                        ['view', ['fullscreen', 'codeview', 'help']],
-                    ],
-                    popatmouse: true,
-                })
-            
+                $('#summernote').summernote();
             })
 
 

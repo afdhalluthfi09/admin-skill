@@ -57,6 +57,7 @@ Route::prefix('users')->middleware('auth')->group(function(){
 
 Route::prefix('sop')->middleware('auth')->group(function(){
     Route::get('', [SopModelController::class, 'index'])->name('sop.index');
+    Route::post('store', [SopModelController::class, 'store'])->name('sop.store');
 });
 
 require __DIR__.'/auth.php';
