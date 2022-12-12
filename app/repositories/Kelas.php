@@ -1,6 +1,6 @@
 <?php  
 
-namespace App\Repositories;
+namespace Repositories;
 
 use App\Models\Kelas as ModelsKelas;
 use Illuminate\Support\Str;

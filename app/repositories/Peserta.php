@@ -1,6 +1,6 @@
 <?php  
 
-namespace App\Repositories;
+namespace Repositories;
 use Yajra\DataTables\DataTables;
 
 class Peserta

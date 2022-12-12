@@ -1,6 +1,8 @@
 <?php  
 
-namespace App\Repositories;
+// namespace App\Repositories;
+namespace Repositories;
+
 
 use App\Models\Artikel as ModelsArtikel;
 use Intervention\Image\ImageManagerStatic as Image;

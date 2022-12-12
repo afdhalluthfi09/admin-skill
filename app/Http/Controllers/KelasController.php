@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\kelas\{KategoriRequest};
-use App\Repositories\Category;
-use App\Repositories\Kelas;
-use App\Repositories\Youtube;
+// use App\Repositories\Category;
+use Reposotories\Category;
+use Reposotories\Kelas;
+use Reposotories\Youtube;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller

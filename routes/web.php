@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Http\Controllers\{ArtikelController, KelasController, UsersController};
+use App\Http\Controllers\{ArtikelController, KelasController, SopModelController, UsersController};
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',with(['pages'=>'Home']));
 });
 
 Route::get('/dashboard', function () {
@@ -53,6 +53,10 @@ Route::prefix('artikel')->middleware('auth')->group(function(){
 });
 Route::prefix('users')->middleware('auth')->group(function(){
     Route::get('', [UsersController::class, 'index'])->name('users.index');
+});
+
+Route::prefix('sop')->middleware('auth')->group(function(){
+    Route::get('', [SopModelController::class, 'index'])->name('sop.index');
 });
 
 require __DIR__.'/auth.php';
