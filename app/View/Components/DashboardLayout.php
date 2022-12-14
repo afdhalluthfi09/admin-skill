@@ -11,8 +11,15 @@ class DashboardLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+    public $page;
+    public function __construct($page = null)
+    {
+        $this->page = $page;
+    }
     public function render()
     {
-        return view('layouts.dashboard');
+        return view('layouts.dashboard',with([
+            'page' => $this->page
+        ]));
     }
 }

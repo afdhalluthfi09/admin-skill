@@ -1,4 +1,5 @@
 <form action="{{ route('sop.store') }}" id="formSop" method="POST">
+    @csrf
     <div class="form-group">
         <label for="judul" class="form-label">Jenis Sop</label>
         <select name="type" id="" class="form-control">

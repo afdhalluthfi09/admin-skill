@@ -29,7 +29,11 @@
     
     <link rel="stylesheet" href="{{asset('summernote/summernote-bs4.css')}}">
     
-    @vite(['resources/scss/app.css','resources/scss/app.scss'])
+    @if ($page !== null)
+        @vite(['resources/css/app.css','resources/scss/app.scss','resources/js/null.js'])
+    @else
+        @vite(['resources/css/app.css','resources/scss/app.scss','resources/js/app.js'])
+    @endif
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -87,9 +91,7 @@
     <!-- jQuery UI 1.11.4 -->
     {{-- <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script> --}}
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
+    
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
     <!-- ChartJS -->

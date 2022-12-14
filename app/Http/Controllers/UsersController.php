@@ -9,6 +9,6 @@ class UsersController extends Controller
 {
     public function index(UsersDataTable $dataTable)
     {
-        return $dataTable->render('pages.user.index');
+        return $dataTable->render('pages.user.index', ['page' => 'app']);
     }
 }

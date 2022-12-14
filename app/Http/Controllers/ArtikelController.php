@@ -19,7 +19,8 @@ class ArtikelController extends Controller
     {
 
         return view('pages.artikel.index',with([
-            'artikel' => $this->artikel->getArtikel()
+            'artikel' => $this->artikel->getArtikel(),
+            'page'=>'null',
         ]));
     }
 
@@ -50,7 +51,9 @@ class ArtikelController extends Controller
     public function delete (Request $request) {
         // dd($request->all());
         $this->artikel->delete($request);
-        return redirect()->back();
+        return redirect()
+                ->back()
+                ->with('success', 'Artikel berhasil dihapus');
     }
 
 

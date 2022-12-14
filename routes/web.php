@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Http\Controllers\{ArtikelController, KelasController, SopModelController, UsersController};
+use App\Http\Controllers\{ArtikelController, EmailController, KelasController, SopModelController, UsersController};
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +58,12 @@ Route::prefix('users')->middleware('auth')->group(function(){
 Route::prefix('sop')->middleware('auth')->group(function(){
     Route::get('', [SopModelController::class, 'index'])->name('sop.index');
     Route::post('store', [SopModelController::class, 'store'])->name('sop.store');
+    Route::post('update', [SopModelController::class, 'update'])->name('sop.update');
+    Route::post('delete', [SopModelController::class, 'delete'])->name('sop.delete');
+});
+
+Route::prefix('email')->middleware('auth')->group(function(){
+    Route::get('', [EmailController::class, 'index'])->name('email.index');
 });
 
 require __DIR__.'/auth.php';

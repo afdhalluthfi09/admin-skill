@@ -71,7 +71,6 @@ class UsersDataTable extends DataTable
     {
         return [
             Column::computed('action'),
-            Column::make('id'),
             Column::make('name'),
             Column::make('email'),
             
