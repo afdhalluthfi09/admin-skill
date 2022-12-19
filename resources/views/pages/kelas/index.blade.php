@@ -22,7 +22,11 @@
                                       <span>...</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                        <a role="button" class="dropdown-item dropdown-header btn-edit" data-toggle="modal" data-name="{{$item->name}}" data-status="{{$item->status}}" data-id="{{$item->id}}" >Edit</a>
+                                        <a role="button" class="dropdown-item dropdown-header btn-edit" 
+                                                         data-toggle="modal" data-name="{{$item->name}}" 
+                                                         data-status="{{$item->status}}" 
+                                                         data-id="{{$item->id}}" 
+                                                         data-target="#modal-edit-category">Edit</a>
                                         <div class="dropdown-divider"></div>
                                         <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-id="{{$item->id}}" >Hapus</a>
                                         <div class="dropdown-divider"></div>
@@ -46,17 +50,13 @@
                                           <span class="description-text">Events</span>
                                         @endif
                                       </div>
-                                      <!-- /.description-block -->
                                     </div>
-                                    <!-- /.col -->
                                     <div class="col-sm-4 border-right">
                                       <div class="description-block">
                                         <h5 class="description-header">13,000</h5>
                                         <span class="description-text">Total Peserta</span>
                                       </div>
-                                      <!-- /.description-block -->
                                     </div>
-                                    <!-- /.col -->
                                     <div class="col-sm-4">
                                       <div class="description-block">
                                         <h5 class="description-header">35</h5>
@@ -89,7 +89,8 @@
       <script>
         $(document).ready(function(){
           $('.btn-edit').click(function(){
-            $('#modal-edit-category').modal('show');
+            // console.log('hellos');
+            // $('#modal-edit-category').modal('show');
             $('#editName').val($(this).data('name'));
             $('#Editstatus').val($(this).data('status'));
             $('<input>').attr({

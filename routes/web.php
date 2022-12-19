@@ -37,6 +37,7 @@ Route::prefix('kelas')->middleware('auth')->group(function () {
     //prosess kelas
     Route::get('/{id}/{slug}', [KelasController::class, 'show'])->name('kelas.show');
     Route::post('/addKelas', [KelasController::class, 'addKelas'])->name('kelas.addKelas');
+    Route::post('/updateKelas', [KelasController::class, 'updateKelas'])->name('kelas.updateKelas');
     Route::get('/listkelas',[KelasController::class,'showListKelas'])->name('kelas.listkelas');
     Route::get('/datail',[KelasController::class,'detailEvent'])->name('kelas.detail');
 });
