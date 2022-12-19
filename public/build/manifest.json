@@ -20,6 +20,11 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
+  "resources/js/null.js": {
+    "file": "assets/null.71cd9388.js",
+    "src": "resources/js/null.js",
+    "isEntry": true
+  },
   "resources/css/app.css": {
     "file": "assets/app.93fdd924.css",
     "src": "resources/css/app.css",
