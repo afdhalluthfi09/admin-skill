@@ -35,10 +35,12 @@ Route::prefix('kelas')->middleware('auth')->group(function () {
     Route::post('/updateKategori', [KelasController::class, 'updateKategori'])->name('kelas.updateKategori');
     Route::get('/deleteKategori', [KelasController::class, 'deleteKategori'])->name('kelas.deleteKategori');
     //prosess kelas
-    Route::get('/{id}/{slug}', [KelasController::class, 'show'])->name('kelas.show');
+    Route::get('/list/{id}/{slug}', [KelasController::class, 'show'])->name('kelas.show');
     Route::post('/addKelas', [KelasController::class, 'addKelas'])->name('kelas.addKelas');
+    Route::post('/editKelas',[KelasController::class,'editKelas'])->name('kelas.edit');
     Route::post('/updateKelas', [KelasController::class, 'updateKelas'])->name('kelas.updateKelas');
-    Route::get('/listkelas',[KelasController::class,'showListKelas'])->name('kelas.listkelas');
+    Route::post('/deletKelas', [KelasController::class, 'deletKelas'])->name('kelas.deletKelas');
+    Route::get('/listkelas/{idhash}',[KelasController::class,'showListKelas'])->name('kelas.listkelas');
     Route::get('/datail',[KelasController::class,'detailEvent'])->name('kelas.detail');
 });
 

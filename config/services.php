@@ -30,5 +30,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'base_url_server'=>[
+        'local' => env('APP_LOCAL'),
+        'image'=>env('APP_IMAGE')
+    ]
 
 ];

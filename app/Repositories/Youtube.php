@@ -5,12 +5,13 @@ namespace Repositories;
 class Youtube
 {
 
-    public function getListYoutube()
+
+    public function getListYoutube($request)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2Csnippet%2Cstatus&playlistId=PLvhdCgCoHXAIGIX3IpDuhkk7q5krtpgG1&key=AIzaSyA1dXY9lPe9zi264_4TzJ6D_DQu344xV8k&maxResults=5",
+            CURLOPT_URL => "https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2Csnippet%2Cstatus&playlistId=".$request."&key=AIzaSyA1dXY9lPe9zi264_4TzJ6D_DQu344xV8k&maxResults=5",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -65,7 +66,7 @@ class Youtube
         } else {
             $decode = json_decode($response, true);
             $items = $decode['items'];
-            
+
             $data = [];
             foreach ($items as $item) {
                 $data[] = [
@@ -77,7 +78,7 @@ class Youtube
                 ];
             }
             return $data;
-            
+
         }
     }
 }

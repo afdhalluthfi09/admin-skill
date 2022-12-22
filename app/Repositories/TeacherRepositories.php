@@ -22,4 +22,38 @@ class TeacherRepositories{
         ]);
         return $db;
     }
+
+    public function updateProfile ($request)
+    {
+        // $db = new Teacher();
+        if($request->editPhoto == null){
+            $db =Teacher::where('kelas_id',$request->kelas_id);
+            return (int) $db->update([
+                'name' => $request->nameprofil,
+                'email' => $request->email,
+                'age' => $request->age,
+                'photo' => $request->photo,
+                'profesi' => $request->profesi,
+                'deskripsi' => $request->deskripsi,
+            ]);
+        }else{
+            $fileName =str_replace(" ","_",$request->editPhoto->getClientOriginalName());
+            $path = $request->editPhoto->storeAs('profil_pemateri',$fileName,'parent_disk');
+            $db =Teacher::where('kelas_id',$request->kelas_id);
+            return (int) $db->update([
+                'name' => $request->nameprofil,
+                'email' => $request->email,
+                'age' => $request->age,
+                'photo' => $path,
+                'profesi' => $request->profesi,
+                'deskripsi' => $request->deskripsi,
+            ]);
+        }
+    }
+
+    public function deleteProfile ($request)
+    {
+        $db =Teacher::where('kelas_id',$request->kelas_id);
+        return (int) $db->delete();
+    }
 }

@@ -5,7 +5,7 @@
                 <div id="cardList" class="p-6 text-gray-900">
                     {{-- @dd($yt->items) --}}
                     <div class="cards">
-                    @foreach ($yt as $item) 
+                    @foreach ($yt as $item)
                             <div class="card">
                                 <div class="card__image-holder">
                                     <img class="card__image" src='{{$item['snippet']['thumbnails']['medium']['url']}}' alt="wave" />
@@ -44,21 +44,21 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 var zindex = 10;
-        
+
                 $("div.card").click(function(e){
                     e.preventDefault();
-        
+
                     var isShowing = false;
-        
+
                     if ($(this).hasClass("show")) {
                         isShowing = true
                     }
-        
+
                     if ($("div.cards").hasClass("showing")) {
                         // a card is already in view
                         $("div.card.show")
                         .removeClass("show");
-        
+
                         if (isShowing) {
                             // this card was showing - reset the grid
                             $("div.cards")
@@ -69,9 +69,9 @@
                             .css({zIndex: zindex})
                             .addClass("show");
                         }
-        
+
                         zindex++;
-        
+
                     } else {
                         // no cards in view
                         $("div.cards")

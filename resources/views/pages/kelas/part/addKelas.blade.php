@@ -173,23 +173,15 @@
                                 <option value="15">15</option>
                             </select></label>
 
-                        <table class="table table-hover" id="participantTable">
-                                <thead>
-                                    <tr>
-                                        <th>&nbsp;</th>
-                                        <th>kurikukm</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tr class="participantRow">
-                                    <td>&nbsp;</td>
-                                    <td><input name="kurikulum[]" id="" type="text" placeholder="Name" class="required-entry form-control"></td>
-                                    <td><button class="btn btn-danger remove" type="button">Remove</button></td>
-                                </tr>
-                                <tr id="addButtonRow">
-                                    <td colspan="4"><center><button class="btn btn-large btn-success add" type="button">Add</button></center></td>
-                                </tr>
-                        </table>
+                            <div class="wrapper" id="participantTable">
+                                <div class="d-flex justify-content-between gap-1">
+                                    <input name="kurikulum[]" id="" type="text" placeholder="Name" class="required-entry form-control">
+                                    <a class="btn btn-danger remove" href="javascript:void()0" >Remove</a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center mt-2">
+                                <a href="javascript:void()0"  class="btn btn-large btn-success add" type="button">Add</a>
+                            </div>
                     </div>
                 </div>
             </div>
