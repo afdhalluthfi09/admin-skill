@@ -5,6 +5,7 @@ namespace Repositories;
 use App\Models\Kelas as ModelsKelas;
 use App\Models\KurikulumModel;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 class Kelas{
 
@@ -125,12 +126,19 @@ class Kelas{
             'base_uri' => config('services.base_url_server.local').'api/kelas/pemograman-dasar',
             'timeout'  => 2.0,
         ]);
+        $response = Http::accept('application/json')
+                        ->get(config('services.base_url_server.local').'api/kelas/pemograman-dasar');
 
-        $response =$client->request('get');
-        $data = json_decode($response->getBody()->getContents(), true);
+        if($response->successful()){
+            return $response->collect();
+        }else{
+            return $response->failed();
+        }
+        // $response =$client->request('get');
+        // $data = json_decode($response->getBody()->getContents(), true);
 
         // $data = ModelsKelas::all();
-        return collect($data['data']);
+        // return collect($data['data']);
     }
 
     public function apiKelasDetails ($request)
