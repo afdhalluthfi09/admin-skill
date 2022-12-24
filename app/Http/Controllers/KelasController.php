@@ -92,7 +92,7 @@ class KelasController extends Controller
 
     }
     public function showListKelas($slug) {
-        // dd($this->youtube->getListYoutube($slug));
+        dd($this->youtube->getListYoutube($slug));
         return view('pages.kelas.listkelas',with([
             'yt' =>$this->youtube->getListYoutube($slug),
         ]));
