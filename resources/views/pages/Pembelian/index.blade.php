@@ -7,7 +7,7 @@
         </div>
     </div>
     <x-modals.modal type='modal-pembelian-edit' judul='Ubah Status' class="modal-md">
-        @include('pages.Pembelian.part.edit')
+        @include('pages.pembelian.part.edit')
     </x-modals.modal>
     @push('scripts')
         {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
