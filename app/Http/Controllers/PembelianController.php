@@ -42,7 +42,8 @@ class PembelianController extends Controller
                     ->route('trasaction.index')
                     ->with('Terjadih Keselahan');
        }
-
-
+    }
+    public function berbubah () {
+        return 'jall';
     }
 }
