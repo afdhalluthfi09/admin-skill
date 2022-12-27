@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Http\Controllers\{ArtikelController, EmailController, KelasController, SopModelController, UsersController};
+use App\Http\Controllers\{ArtikelController, EmailController, KelasController, PembelianController, SopModelController, UsersController};
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,6 +67,11 @@ Route::prefix('sop')->middleware('auth')->group(function(){
 
 Route::prefix('email')->middleware('auth')->group(function(){
     Route::get('', [EmailController::class, 'index'])->name('email.index');
+});
+
+Route::prefix('transaction')->middleware('auth')->group(function(){
+    Route::get('',[PembelianController::class,'index'])->name('trasaction.index');
+    Route::post('',[PembelianController::class,'edit'])->name('trasaction.edit');
 });
 
 require __DIR__.'/auth.php';

@@ -23,8 +23,8 @@
                                 <tr>
                                     <td>
                                         <a role="button" data-id="{{$value->id}}"
-                                                        data-description="{{$value->description}}" 
-                                                        data-type="{{$value->type}}" 
+                                                        data-description="{{$value->description}}"
+                                                        data-type="{{$value->type}}"
                                                         data-toggle="modal"
                                                         class="btn btn-primary btn-sm btn-edit">Edit</a>
                                                         <a role="button" data-toggle="modal" data-type="{{$value->type}}" data-description="{{$value->description}}"  class="btn btn-success btn-sm btn-detail">Detail</a>
@@ -53,11 +53,11 @@
     <x-modals.modal type='modal-sop-detail' judul='Detail Sop' class="modal-md">
         @include('pages.sop.part.detail')
     </x-modals.modal>
-    @include('sweetalert::alert')
+    {{-- @include('sweetalert::alert') --}}
     @push('scripts')
         <script>
             $(document).ready(function() {
-               
+
                 $('.btn-add').on('click', function() {
                     $('#modal-sop').modal('show');
                     $('#summernote').summernote({

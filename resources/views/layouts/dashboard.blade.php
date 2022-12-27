@@ -26,9 +26,9 @@
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-    
+
     <link rel="stylesheet" href="{{asset('summernote/summernote-bs4.css')}}">
-    
+
     @if ($page !== null)
         @vite(['resources/css/app.css','resources/scss/app.scss','resources/js/null.js'])
     @else
@@ -64,15 +64,15 @@
                     </div>
                 </div>
             </div>
-            
+
             <section class="content">
                 <div class="container-fluid">
                     {{ $slot }}
                 </div>
             </section>
-            
+
         </div>
-      
+
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">sekolahskill.com</a>.</strong>
             All rights reserved.
@@ -81,17 +81,18 @@
             </div>
         </footer>
 
-       
+
         <aside class="control-sidebar control-sidebar-dark"></aside>
-       
+
     </div>
-    
+    @include('sweetalert::alert')
     <!-- jQuery -->
+
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
     {{-- <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script> --}}
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    
+
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
     <!-- ChartJS -->
@@ -118,5 +119,5 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }} "></script>
     <script src="{{ asset('summernote/summernote-bs4.js') }}"></script>
     @stack('scripts')
-   
+
 </body>
