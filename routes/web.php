@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Http\Controllers\{ArtikelController, EmailController, KelasController, PembelianController, SopModelController, UsersController};
+use App\Http\Controllers\{ArtikelController, EmailController, KelasController, LokerModelController, PembelianController, SopModelController, UsersController};
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +72,17 @@ Route::prefix('email')->middleware('auth')->group(function(){
 Route::prefix('transaction')->middleware('auth')->group(function(){
     Route::get('',[PembelianController::class,'index'])->name('trasaction.index');
     Route::post('',[PembelianController::class,'edit'])->name('trasaction.edit');
+});
+
+Route::prefix('loker')->middleware(['auth'])->group(function(){
+    Route::get('',[LokerModelController::class,'index'])->name('loker.index');
+    Route::get('settingan',[LokerModelController::class,'settingan'])->name('loker.setting');
+
+    // ajax
+    Route::post('addkejraan',[LokerModelController::class,'addkerjaan'])->name('loker.addkerjaan');
+    Route::post('updatekejraan',[LokerModelController::class,'udpatekerjaan'])->name('loker.updatekerjaan');
+    Route::post('hapuskerjaan',[LokerModelController::class,'hapuskerjaan'])->name('loker.hapuskerjaan');
+
 });
 
 require __DIR__.'/auth.php';

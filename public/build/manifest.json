@@ -1,11 +1,11 @@
 {
-  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
-    "file": "assets/bootstrap-icons.966620f9.woff2",
-    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
-  },
   "resources/img/bg_hp.png": {
     "file": "assets/bg_hp.7128951a.png",
     "src": "resources/img/bg_hp.png"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons.966620f9.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
     "file": "assets/bootstrap-icons.c6569d46.woff",
@@ -26,7 +26,7 @@
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.667e1da7.css",
+    "file": "assets/app.28ca7c9c.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
