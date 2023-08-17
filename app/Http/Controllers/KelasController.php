@@ -67,9 +67,7 @@ class KelasController extends Controller
     }
 
     public function addKelas (Request $request) {
-        // dd($request->kurikulum);
 
-        // return 'berhasil';
         DB::beginTransaction();
         try {
             //code...
@@ -82,6 +80,7 @@ class KelasController extends Controller
                     ->with('Berhasil Di Tambahkan');
         } catch (\Exception $e) {
             //throw $th;
+            dd($e);
             DB::rollback();
             return response()->json([
                 'message' => $e->getMessage()

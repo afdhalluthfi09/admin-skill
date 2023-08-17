@@ -10,7 +10,7 @@ class TeacherRepositories{
     {
         // kelas_id,name,email,age,photo,address,deskripsi,profesi
         $fileName =str_replace(" ","_",$request->photo->getClientOriginalName());
-        $path = $request->photo->storeAs('profil_pemateri',$fileName,'parent_disk');
+        $path = $request->photo->storeAs('',$fileName,'parent_disk');
         $db =Teacher::create([
             'kelas_id' =>$kelas_id,
             'name'=>$request->nama_profile,
@@ -38,7 +38,7 @@ class TeacherRepositories{
             ]);
         }else{
             $fileName =str_replace(" ","_",$request->editPhoto->getClientOriginalName());
-            $path = $request->editPhoto->storeAs('profil_pemateri',$fileName,'parent_disk');
+            $path = $request->editPhoto->storeAs('',$fileName,'parent_disk');
             $db =Teacher::where('kelas_id',$request->kelas_id);
             return (int) $db->update([
                 'name' => $request->nameprofil,

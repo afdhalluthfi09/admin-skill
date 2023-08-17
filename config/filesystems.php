@@ -38,7 +38,7 @@ return [
 
         'parent_disk' => [
             'driver' => 'local',
-            'root' => env('IMG_STORE'),
+            'root' => env('APP_IMAGE'),
             'visibility' => 'public',
         ],
 

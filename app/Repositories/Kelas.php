@@ -18,7 +18,7 @@ class Kelas{
     public function addKelas ($request)
     {
         $fileName =str_replace(" ","_",$request->gambar->getClientOriginalName());
-        $path = $request->gambar->storeAs('kelas',$fileName,'parent_disk');
+        $path = $request->gambar->storeAs('',$fileName,'parent_disk');
         // dd($fileName);
         $data = ModelsKelas::create([
             'name' => $request->name,
