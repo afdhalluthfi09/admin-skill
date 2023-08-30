@@ -1,5 +1,5 @@
-<x-dashboard-layout page="null">
-  <div class="py-12">
+<x-ladmin>
+<div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900">
@@ -31,21 +31,21 @@
                       </a>
                       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                           <a role="button" class="dropdown-item dropdown-header btn-edit" data-toggle="modal"
-                                           data-slug="{{$item->slug}}"
-                                           data-id ="{{$item->id}}">Edit</a>
+                                           data-slug="{{$item['slug']}}"
+                                           data-id ="{{$item['id']}}">Edit</a>
                           <div class="dropdown-divider"></div>
-                          <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-id="{{$item->id}}" >Hapus</a>
+                          <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-id="{{$item['id']}}" >Hapus</a>
                           <div class="dropdown-divider"></div>
                           {{-- <a role="button" class="dropdown-item dropdown-header" href="{{ route('kelas.show', ['id'=>$item->id,'slug'=>$item->idhash]) }}">lihat</a> --}}
                       </div>
                     </div>
-                    <h5>{{$item->name}}</h5>
-                    <p>Rp.{{$item->harga}}</p>
+                    <h5>{{$item['kelas']}}</h5>
+                    <p>Rp.{{$item['harga']}}</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="{{ route('kelas.listkelas',['idhash'=>$item->idhash]) }}" class="small-box-footer">
+                  <a href="{{ route('kelas.listkelas',['idhash'=>$item['youtube_id']]) }}" class="small-box-footer">
                     Lihat Detail <i class="fas fa-arrow-circle-right"></i>
                   </a>
                 </div>
@@ -69,6 +69,8 @@
   @push('scripts')
   <script>
     $(document).ready(function(){
+        let inputGuru =document.getElementById('guru');
+        let inputNameProfile =document.getElementById('namaPemateri');
           $('.btn-add').click(function(){
                 $('#summernote').summernote({
                             placeholder: 'Isi Disnini',
@@ -115,6 +117,9 @@
                     e.preventDefault()
                     $(this).parent('div').remove();
                     x--;
+                })
+                inputGuru.addEventListener('input',()=>{
+                    inputNameProfile.value =inputGuru.value
                 })
             // console.log($('#Editstatus').val($(this).data('status')));
           })
@@ -209,13 +214,7 @@
                         readonly: true
                 }).appendTo('form');
           })
-
-
-
-
-
-
     })
   </script>
   @endpush
-</x-dashboard-layout>
+</x-ladmin>

@@ -97,7 +97,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="namaPemateri" class="form-label">Nama Pemateri</label>
-                                    <input type="text" id="namaPemateri" name="nama_profile" class="form-control"/>
+                                    <input type="text" id="namaPemateri" name="nama_profile" class="form-control" readonly/>
                                 </div>
                             </div>
                             <div class="col-md-6">

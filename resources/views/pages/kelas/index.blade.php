@@ -1,4 +1,7 @@
-<x-dashboard-layout>
+<x-ladmin>
+@push('vite')
+    @vite(['resources/js/null.js'])
+@endpush
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -11,7 +14,7 @@
                     </div>
                     <div id="cardCategory" class="row mt-2 ml-2">
                       {{-- @dd($kategori->whereIn('status', ['Kelas','Events'])) --}}
-                        @foreach ($kategori->whereIn('status', ['Kelas','Events']) as $item) 
+                        @foreach ($kategori->whereIn('status', ['Kelas','Events']) as $item)
                           <div class="col-md-4">
                               <div  class="card card-widget widget-user">
                                 <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -22,10 +25,10 @@
                                       <span>...</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                        <a role="button" class="dropdown-item dropdown-header btn-edit" 
-                                                         data-toggle="modal" data-name="{{$item->name}}" 
-                                                         data-status="{{$item->status}}" 
-                                                         data-id="{{$item->id}}" 
+                                        <a role="button" class="dropdown-item dropdown-header btn-edit"
+                                                         data-toggle="modal" data-name="{{$item->name}}"
+                                                         data-status="{{$item->status}}"
+                                                         data-id="{{$item->id}}"
                                                          data-target="#modal-edit-category">Edit</a>
                                         <div class="dropdown-divider"></div>
                                         <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-id="{{$item->id}}" >Hapus</a>
@@ -53,7 +56,7 @@
                                     </div>
                                     <div class="col-sm-4 border-right">
                                       <div class="description-block">
-                                        <h5 class="description-header">13,000</h5>
+                                        <h5 class="description-header"></h5>
                                         <span class="description-text">Total Peserta</span>
                                       </div>
                                     </div>
@@ -85,35 +88,4 @@
     <x-modals.modal type='modal-delete-category' judul='Buat Kategori' class="modal-md">
       @include('pages.kelas.part.delete')
     </x-modals.modal>
-    @push('scripts')
-      <script>
-        $(document).ready(function(){
-          $('.btn-edit').click(function(){
-            // console.log('hellos');
-            // $('#modal-edit-category').modal('show');
-            $('#editName').val($(this).data('name'));
-            $('#Editstatus').val($(this).data('status'));
-            $('<input>').attr({
-                    type: 'hidden',
-                    id: 'idmapelo',
-                    name: 'id',
-                    value: $(this).data('id'),
-                    readonly: true
-              }).appendTo('form');
-            // console.log($('#Editstatus').val($(this).data('status')));
-          })
-          $('.btn-delete').click(function(){
-            $('#modal-delete-category').modal('show');
-            $('<input>').attr({
-                    type: 'hidden',
-                    id: 'idmapelo',
-                    name: 'id',
-                    value: $(this).data('id'),
-                    readonly: true
-              }).appendTo('form');
-            // console.log($('#Editstatus').val($(this).data('status')));
-          })
-        })
-      </script>
-    @endpush
-</x-dashboard-layout>
+</x-ladmin>

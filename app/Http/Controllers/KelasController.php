@@ -13,6 +13,7 @@ use Repositories\Youtube;
 use Repositories\TeacherRepositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Str;
@@ -58,6 +59,7 @@ class KelasController extends Controller
     }
     // prosess kelas
     public function show ($id,$slug) {
+
         return view('pages.kelas.kelas',with([
             'kategori_id' => $id,
             'slug'=>$slug,
@@ -67,7 +69,7 @@ class KelasController extends Controller
     }
 
     public function addKelas (Request $request) {
-
+        dd($request->all());
         DB::beginTransaction();
         try {
             //code...

@@ -12,9 +12,11 @@ class DashboardLayout extends Component
      * @return \Illuminate\View\View
      */
     public $page;
-    public function __construct($page = null)
+    public $js;
+    public function __construct($page = null,$js=null)
     {
         $this->page = $page;
+        $this->js=$js;
     }
     public function render()
     {

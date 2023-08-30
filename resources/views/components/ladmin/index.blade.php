@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
 
     <link rel="stylesheet" href="{{asset('summernote/summernote-bs4.css')}}">
-    @stack('vite')
     @vite(['resources/scss/app.scss','resources/js/app.js'])
+    @stack('vite')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

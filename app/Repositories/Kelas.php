@@ -11,8 +11,28 @@ class Kelas{
 
     public function getKelas ()
     {
-        $collection = ModelsKelas::all();
-        return $collection;
+        try {
+            $response = Http::withHeaders([
+                'Accept' => 'application/json'
+            ])->get('sekolahskillapi.test/api/kelas');
+
+            if ($response->successful()) {
+                $data = $response->json()['data'];
+                // Lakukan manipulasi data selanjutnya
+            } else {
+                // Tangani respons tidak berhasil
+                $statusCode = $response->status();
+                dd($statusCode);
+                // Lakukan sesuatu sesuai kebutuhan, misalnya tampilkan pesan error
+            }
+        } catch (\Exception $e) {
+            // Tangani error lainnya, seperti masalah koneksi atau exception lainnya
+            // Anda dapat menampilkan pesan error atau melakukan tindakan sesuai kebutuhan
+            $errorMessage = $e->getMessage();
+            dd($errorMessage);
+        }
+
+        return collect($data);
     }
 
     public function addKelas ($request)
