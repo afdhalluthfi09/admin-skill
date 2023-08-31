@@ -164,7 +164,7 @@ class Kelas{
     public function apiKelasDetails ($request)
     {
         $client = new Client([
-            'base_uri' => config('services.base_url_server.local').'api/kelas/'.$request,
+            'base_uri' => config('services.api.local').'/kelas/'.$request,
             'timeout'  => 2.0,
         ]);
 

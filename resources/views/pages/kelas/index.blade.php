@@ -13,8 +13,8 @@
                         </button>
                     </div>
                     <div id="cardCategory" class="row mt-2 ml-2">
-                      {{-- @dd($kategori->whereIn('status', ['Kelas','Events'])) --}}
-                        @foreach ($kategori->whereIn('status', ['Kelas','Events']) as $item)
+                      {{-- @dd($kategori['data']->whereIn('status', ['Kelas','Events'])) --}}
+                        @foreach ($kategori['data'] as $item)
                           <div class="col-md-4">
                               <div  class="card card-widget widget-user">
                                 <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -26,18 +26,18 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                                         <a role="button" class="dropdown-item dropdown-header btn-edit"
-                                                         data-toggle="modal" data-name="{{$item->name}}"
-                                                         data-status="{{$item->status}}"
-                                                         data-id="{{$item->id}}"
+                                                         data-toggle="modal" data-name="{{$item['name']}}"
+                                                         data-status="{{$item['status']}}"
+                                                         data-id="{{$item['id']}}"
                                                          data-target="#modal-edit-category">Edit</a>
                                         <div class="dropdown-divider"></div>
-                                        <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-id="{{$item->id}}" >Hapus</a>
+                                        <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-id="{{$item['id']}}" >Hapus</a>
                                         <div class="dropdown-divider"></div>
-                                        <a role="button" class="dropdown-item dropdown-header" href="{{ route('kelas.show', ['id'=>$item->id,'slug'=>$item->slug]) }}">Lihat</a>
+                                        <a role="button" class="dropdown-item dropdown-header" href="{{ route('kelas.show', ['id'=>$item['id'],'slug'=>$item['slug']]) }}">Lihat</a>
                                     </div>
                                   </div>
                                   <h3 class="widget-user-username text-right">Sekolah Skill</h3>
-                                  <h5 class="widget-user-desc text-right">{{$item->name}}</h5>
+                                  <h5 class="widget-user-desc text-right">{{$item['name']}}</h5>
                                 </div>
                                 <div class="widget-user-image">
                                   <img class="img-circle" src="{{ asset('dist/img/logo_pbs.png') }}" alt="sekolahskill.com">
@@ -46,10 +46,10 @@
                                   <div class="row">
                                     <div class="col-sm-4 border-right">
                                       <div class="description-block">
-                                        <h5 class="description-header">3,200</h5>
-                                        @if ($item->status == 'Kelas')
+                                        <h5 class="description-header">{{$kategori['jumlahkelas']}}</h5>
+                                        @if ($item['status'] == 'Kelas')
                                           <span class="description-text">Kelas</span>
-                                        @elseif ($item->status == 'Events')
+                                        @elseif ($item['status'] == 'Events')
                                           <span class="description-text">Events</span>
                                         @endif
                                       </div>

@@ -35,8 +35,11 @@ class KelasController extends Controller
 
     // proses category kelas
     public function index(){
+        $kategori=Http::acceptJson()->get(config('services.api.local').'/categories');
+
+        // dd(collect($kategori->collect()));
         return view('pages.kelas.index',with([
-            'kategori' =>$this->kategori->getKategori()
+            'kategori' =>collect($kategori->collect())
         ]));
     }
 
@@ -113,7 +116,7 @@ class KelasController extends Controller
         // echo $html;
         if(isset($request)){
             $datas=Carbon::createFromFormat('d-m-Y',$data['jadwal'],'Asia/Jakarta')->format('Y-m-d');
-            $url =config('services.base_url_server.image');
+            $url =config('services.api.image');
             $html .= '
             <div id="modalBody" class="modal-body">
                 <input type="hidden" name="kelas_id" value='.$request->id.' />

@@ -46,6 +46,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        dd($request->all());
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
@@ -81,18 +82,16 @@ class AuthenticatedSessionController extends Controller
                 $data =$response->json();
                 // dd($data);
                 $dataResponse =$data["data"];
-                // dd($dataResponse);
                 Session::put('user',$dataResponse);
                 Session::put('tokenId',$dataResponse["token"]);
                 // dd($response->ok());
-                if($response->ok())
+                if($response->successful())
                 {
                     return redirect()->route('dashboard');
                 }else{
-                    // return response()->json([
-                    //     "data" =>"belum cocok"
-                    // ]);
-                    return redirect()->route('dashboard');
+                    return response()->json([
+                        "data" =>"belum cocok"
+                    ]);
                 }
             } catch (\Throwable $th) {
                 //throw $th;
