@@ -1,4 +1,5 @@
-<form action="{{ route('kelas.addKategori') }}" method="post">
+{{-- <form action="{{ route('kelas.addKategori') }}" method="post"> --}}
+<form id="formAddCategory">
     @csrf
     <div class="modal-body">
         <section class="content">
@@ -42,6 +43,6 @@
     </div>
     <div class="modal-footer justify-content-between">
       <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-      <button type="submit" class="btn btn-primary">Simpan</button>
+      <button id="buttonSumbitCatgeory" type="submit" class="btn btn-primary">Simpan</button>
     </div>
 </form>

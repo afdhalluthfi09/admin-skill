@@ -61,14 +61,18 @@ class KelasController extends Controller
         return redirect()->back();
     }
     // prosess kelas
-    public function show ($id,$slug) {
+    public function show ($slug) {
+        // dd($slug);
+        $data =Http::acceptJson()->get(config('services.api.local').'/kelas/by-category',[
+            "kategory"=>$slug
+        ]);
 
-        return view('pages.kelas.kelas',with([
-            'kategori_id' => $id,
-            'slug'=>$slug,
-            'kelas' => $this->kelas->getKelas(),
-            'test' =>$this->kelas->testApi()
-        ]));
+        if($data->successful()){
+            // dd($data->json());
+            return view('pages.kelas.kelas',["kelas"=>$data->json(),'slug'=>$slug]);
+        }else{
+            dd($data->failed());
+        }
     }
 
     public function addKelas (Request $request) {

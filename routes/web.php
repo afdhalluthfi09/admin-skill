@@ -37,7 +37,7 @@ Route::group(['prefix'=>'kelas',"middleware"=>[AuthChek::class]],function() {
     Route::post('/updateKategori', [KelasController::class, 'updateKategori'])->name('kelas.updateKategori');
     Route::get('/deleteKategori', [KelasController::class, 'deleteKategori'])->name('kelas.deleteKategori');
     //prosess kelas
-    Route::get('/list/{id}/{slug}', [KelasController::class, 'show'])->name('kelas.show');
+    Route::get('/list/{slug}', [KelasController::class, 'show'])->name('kelas.show');
     Route::post('/addKelas', [KelasController::class, 'addKelas'])->name('kelas.addKelas');
     Route::post('/editKelas',[KelasController::class,'editKelas'])->name('kelas.edit');
     Route::post('/updateKelas', [KelasController::class, 'updateKelas'])->name('kelas.updateKelas');

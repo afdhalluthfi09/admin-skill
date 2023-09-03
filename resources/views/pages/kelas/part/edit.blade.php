@@ -1,6 +1,5 @@
-<form action="{{ route('kelas.updateKategori') }}" method="post">
+<form id="categoryFormEdit" method="post">
     @csrf
-    
     <div class="modal-body">
         <section class="content">
             <div class="container-fluid">

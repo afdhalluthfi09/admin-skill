@@ -1,4 +1,4 @@
-<form action="{{ route('kelas.deleteKategori') }}" method="GET">
+<form id="catgeoriDeleteForm" method="POST">
     @csrf
     <div class="modal-body">
         <section class="content">

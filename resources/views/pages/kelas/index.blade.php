@@ -31,9 +31,12 @@
                                                          data-id="{{$item['id']}}"
                                                          data-target="#modal-edit-category">Edit</a>
                                         <div class="dropdown-divider"></div>
-                                        <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-id="{{$item['id']}}" >Hapus</a>
+                                        <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-target="#modal-delete-category" data-id="{{$item['id']}}" >Hapus</a>
                                         <div class="dropdown-divider"></div>
-                                        <a role="button" class="dropdown-item dropdown-header" href="{{ route('kelas.show', ['id'=>$item['id'],'slug'=>$item['slug']]) }}">Lihat</a>
+                                        <form action="{{ route('kelas.show', ['slug'=>$item['slug']]) }}" method="get">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item dropdown-header">Lihat</button>
+                                        </form>
                                     </div>
                                   </div>
                                   <h3 class="widget-user-username text-right">Sekolah Skill</h3>
@@ -82,10 +85,10 @@
     <x-modals.modal type='modal-lg' judul='Buat Kategori' class="modal-md">
       @include('pages.kelas.part.add')
     </x-modals.modal>
-    <x-modals.modal type='modal-edit-category' judul='Buat Kategori' class="modal-md">
+    <x-modals.modal type='modal-edit-category' judul='Edit Kategori' class="modal-md">
       @include('pages.kelas.part.edit')
     </x-modals.modal>
-    <x-modals.modal type='modal-delete-category' judul='Buat Kategori' class="modal-md">
+    <x-modals.modal type='modal-delete-category' judul='Hapus Kategori' class="modal-md">
       @include('pages.kelas.part.delete')
     </x-modals.modal>
 </x-ladmin>

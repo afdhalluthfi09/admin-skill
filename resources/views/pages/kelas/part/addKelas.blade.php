@@ -1,4 +1,4 @@
-<form action="{{ route('kelas.addKelas') }}" method="post" enctype='multipart/form-data' >
+<form id="formAdd" method="post" enctype='multipart/form-data' >
     @csrf
     <div class="modal-body">
         {{-- kelas --}}
@@ -124,7 +124,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="form-label">Photo</label>
-                                <input type="file" class="form-control" name="photo">
+                                <input type="file" class="form-control" id="photo" name="photo">
                             </div>
                         </div>
                         <div class="row">
