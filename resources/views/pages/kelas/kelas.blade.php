@@ -10,7 +10,7 @@
         <div class="p-6 text-gray-900">
           <div class="d-flex ml-2 mr-2 mt-2">
             <h1 class="h3 mb-4 text-gray-800">Kelas</h1>
-            <button id="modalAdd" type="button" class="button ml-auto btn-add" data-toggle="modal" data-id=""
+            <button id="modalAdd" type="button" class="button ml-auto btn-add" data-toggle="modal" data-id="{{$kelas[0]["categorise_id"]["id"]}}"
               data-target="#modal-lg">
               Tambah Kelas
             </button>
@@ -20,8 +20,8 @@
                 hehe
             </div>
           </div>
-          <div class="row mt-2">
-            @foreach ($kelas[0] as $item)
+          <div id="renderKelas" class="row mt-2">
+            @foreach ($kelas as $item)
               <div class="col-lg-3 col-6">
                 <!-- small card -->
                 <div class="small-box bg-success">

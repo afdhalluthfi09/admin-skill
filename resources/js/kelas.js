@@ -1,9 +1,6 @@
 console.log('hells');
 $('#modalAdd').on('click',function(e){
     e.preventDefault();
-    let formAdd =$('#formAdd');
-    let inputGambar = formAdd.find('#gambar');
-    let inputPhoto = formAdd.find('#photo');
     let inputGuru =document.getElementById('guru');
     let inputNameProfile =document.getElementById('namaPemateri');
     $('#summernote').summernote({
@@ -55,32 +52,49 @@ $('#modalAdd').on('click',function(e){
                     inputNameProfile.value =inputGuru.value
                 })
     $('#modal-add').modal('show')
+    let formAdd =$('#formAdd');
+    let inputGambar = formAdd.find('#gambar');
+    let inputPhoto = formAdd.find('#photo');
+
     formAdd.on('submit',function(e){
         e.preventDefault()
-        // console.log(inputGambar);
-        let data =formAdd.serialize();
+        let formArray =formAdd.serializeArray();
         let formData = new FormData();
-        data.forEach(item => {
+        formArray.forEach(item => {
+            console.log(item.name);
             formData.append(item.name,item.value)
         });
         formData.append('gambar',inputGambar[0].files[0])
         formData.append('photo',inputPhoto[0].files[0])
         makeAjaxRequest('add',formData)
-            .then((data)=>{console.log(data);})
-            .catch((error)=>{console.log(error);})
+             .then((data)=>{
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data Updated',
+                    text: data.message,
+                }).then((result)=>{
+                    if (result.isConfirmed) {
+                        $('#renderKelas').html(data.html);
+                    }
+                })
+             })
+             .catch((erro)=>{console.log(erro);})
     })
 })
 
 
 function makeAjaxRequest(mode=null, data=null){
     if(mode == 'add'){
-        return new Promise((resolve,reject)=>{
+        return new Promise((resolve, reject) => {
             $.ajax({
                 url:'http://sekolahskillapi.test/api/kelas',
                 type:"POST",
                 data:data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
                 success:(data)=>{resolve(data);},
-                error:(error)=>{reject(error);}
+                error:(error)=>{reject(error);},
             });
         });
     }else if(mode == 'edit'){
@@ -104,4 +118,27 @@ function makeAjaxRequest(mode=null, data=null){
             });
         });
     }
+}
+async function fetchUpdateP(formData) {
+    let headersList = {
+        "withCredentials":true
+    }
+
+    await fetch('http://sekolahskillapi.test/api/kelas', {
+        method: 'POST',
+        body: formData,
+        headers:headersList
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }

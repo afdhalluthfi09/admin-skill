@@ -31,7 +31,7 @@ return [
     /*
      * Matches the request origin. `['*']` allows all origins. Wildcards can be used, eg `*.mydomain.com`
      */
-    'allowed_origins' => ['sekolahskillapi.test'],
+    'allowed_origins' => ['http://sekolahskillapi.test'],
 
     /*
      * Patterns that can be used with `preg_match` to match the origin.
@@ -41,7 +41,7 @@ return [
     /*
      * Sets the Access-Control-Allow-Headers response header. `['*']` allows all headers.
      */
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['Content-Type'],
 
     /*
      * Sets the Access-Control-Expose-Headers response header with these headers.
@@ -56,5 +56,5 @@ return [
     /*
      * Sets the Access-Control-Allow-Credentials header.
      */
-    'supports_credentials' => true,
+    'supports_credentials' => false,
 ];
