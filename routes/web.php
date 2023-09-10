@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Http\Controllers\{ArtikelController, EmailController, KelasController, LokerModelController, PembelianController, SopModelController, UsersController};
+use App\Http\Controllers\{ArtikelController, EmailController, FormController, KelasController, LokerModelController, PembelianController, SopModelController, UsersController};
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AuthChek;
 use Illuminate\Support\Facades\Route;
@@ -85,6 +85,10 @@ Route::group(["prefix"=>'loker',"middleware"=>[AuthChek::class]],function(){
     Route::post('updatekejraan',[LokerModelController::class,'udpatekerjaan'])->name('loker.updatekerjaan');
     Route::post('hapuskerjaan',[LokerModelController::class,'hapuskerjaan'])->name('loker.hapuskerjaan');
 
+});
+
+Route::group(["prefix"=>'form',"middleware"=>[AuthChek::class]],function(){
+    Route::get('edit-kelas/{slug}',[FormController::class,'formEditKelas']);
 });
 
 Route::get('keluar',function(){

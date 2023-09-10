@@ -1,10 +1,6 @@
 $(document).ready(function(){
     console.log('hellos');
-    // scoope catgori
-    //edit-catgoeri
     $('.btn-edit').click(function(){
-      // console.log('hellos');
-      // $('#modal-edit-category').modal('show');
       $('#editName').val($(this).data('name'));
       $('#Editstatus').val($(this).data('status'));
       $('<input>').attr({
@@ -23,6 +19,7 @@ $(document).ready(function(){
             makeAjaxRequest('update',data)
                 .then((data)=>{
                     $('#cardCategory').html(data)
+                    formReset('modal-edit-category','categoryFormEdit')
                 })
                 .catch((error)=>{
                     console.log(error);
@@ -31,15 +28,15 @@ $(document).ready(function(){
       // console.log($('#Editstatus').val($(this).data('status')));
     })
 })
-console.log($('#modal-delete-category'));
-//add-catgori
+// console.log($('#modal-delete-category'));
+//add-catgoricategoryFormEdit
 $('#formAddCategory').on('submit',function(e){
     e.preventDefault();
     let data =$(this).serialize();
     makeAjaxRequest('add',data)
       .then(data =>{
-
         $('#cardCategory').html(data)
+        formReset('modal-lg','formAddCategory')
       })
       .catch(error =>{console.log(error);})
 });
@@ -58,13 +55,14 @@ $('.btn-delete').on('click',function(){
           makeAjaxRequest('delete',data)
                     .then((data)=>{
                       $('#cardCategory').html(data)
+                      formReset('modal-delete-category','catgeoriDeleteForm')
                     })
                     .catch((error)=>{
                       console.log(error);
                     })
       })
   })
-// prosess data categori
+//written by : afdhalluthfi09,func enpoint;
 function makeAjaxRequest(mode=null, data=null) {
     if(mode == 'add'){
         return new Promise(function (resolve, reject) {
@@ -109,4 +107,9 @@ function makeAjaxRequest(mode=null, data=null) {
             })
         })
     }
+}
+//written by : afdhalluthfi09,func resetForm;
+function formReset(idElement,idForm){
+    $(`#${idElement}`).modal('hide');
+    $(`#${idForm}`)[0].reset();
 }
