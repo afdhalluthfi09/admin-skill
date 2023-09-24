@@ -13,6 +13,8 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/null.js',
                 'resources/js/kelas.js',
+                'resources/js/user.js',
+                'resources/js/artikel.js',
                 'resources/js/app.js',
             ],
             refresh:true

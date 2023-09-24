@@ -1,0 +1,120 @@
+$color_1: #444;
+$color_2: #fff;
+$background-color_1: #fff;
+$background-color_2: #444;
+$background-color_3: #eee;
+
+
+.btn-dowload{display: none;}
+.container-playlist-video {
+	max-width: 1200px;
+	margin: 100px auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 20px;
+	.main-video-container {
+		flex: 1 1 700px;
+		border-radius: 5px;
+		box-shadow: 0 5px 15px rgba(0,0,0,.1);
+		background-color: $background-color_1;
+		padding: 15px;
+		.slip{
+            height: fit-content;
+            margin-bottom: 20px;
+            .main-video {
+                margin-bottom: 7px;
+                border-radius: 5px;
+                width: 100%;
+                height: 50vh;
+            }
+        }
+		.main-vid-title {
+			font-size: 20px;
+			color: $color_1;
+		}
+	}
+	.video-list-container {
+		flex: 1 1 350px;
+		height: 485px;
+		overflow-y: scroll;
+		border-radius: 5px;
+		box-shadow: 0 5px 15px rgba(0,0,0,.1);
+		background-color: $background-color_1;
+		padding: 15px;
+        .btn-dowload-web{ display: block;}
+		&::-webkit-scrollbar {
+			width: 10px;
+		}
+		&::-webkit-scrollbar-track {
+			background-color: $background-color_1;
+			border-radius: 5px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: $background-color_2;
+			border-radius: 5px;
+		}
+		.list {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+			padding: 10px;
+			background-color: $background-color_3;
+			cursor: pointer;
+			border-radius: 5px;
+			margin-bottom: 10px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			.list-video {
+				width: 100px;
+				border-radius: 5px;
+			}
+			.list-title {
+				font-size: 17px;
+				color: $color_1;
+			}
+		}
+		.list.active {
+			background-color: $background-color_2;
+			.list-title {
+				color: $color_2;
+			}
+		}
+	}
+}
+@media (max-width:1200px) {
+	.container-playlist-video {
+		margin: 0;
+	}
+}
+@media (max-width:450px) {
+    .btn-dowload{ display: block;}
+	.container-playlist-video {
+		.main-video-container {
+			.main-vid-title {
+				font-size: 15px;
+				text-align: center;
+			}
+            .slip{
+                .main-video{
+                    height: 27vh;
+                }
+            }
+		}
+		.video-list-container {
+            .btn-dowload-web{ display: none;}
+			.list {
+				flex-flow: column;
+				gap: 10px;
+				.list-video {
+					width: 64vw;
+				}
+				.list-title {
+					font-size: 15px;
+					text-align: center;
+				}
+			}
+		}
+	}
+}

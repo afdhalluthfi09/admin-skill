@@ -1,87 +1,94 @@
-console.log('hells');
 $('#modalAdd').on('click',function(e){
     e.preventDefault();
-    let inputGuru =document.getElementById('guru');
-    let inputNameProfile =document.getElementById('namaPemateri');
-    $('#summernote').summernote({
-        placeholder: 'Isi Disnini',
-        tabsize: 2,
-        focus: true,
-        // airMode: true,
-        height: 100
-    });
-    $('#summernoteProfile').summernote({
-            placeholder: 'Isi Disnini',
-            tabsize: 2,
-            focus: true,
-            // airMode: true,
-            height: 100
-    });
-    $('<input>').attr({
-        type: 'hidden',
-        id: 'idmapelo',
-        name: 'categorise_id',
-        value: $(this).data('id'),
-        readonly: true
-    }).appendTo('form');
-    let addButton=$('.add');
-                let maxCount =10;
-                let x =1;
-                let wrapper =$('.wrapper');
-                let fieldHtml=`
-                    <div class="d-flex justify-content-between gap-1 mt-2">
-                            <input name="kurikulum[]" id="" type="text" placeholder="Name" class="required-entry form-control">
-                            <a class="btn btn-danger remove" href="javascript:void()0" >Remove</a>
-                    </div>
-                `;
-                $(addButton).click(function(e){
-                    e.preventDefault();
-                    console.log('hellos');
-                    if(x < maxCount){
-                        x++;
-                        // console.log(wrapper);
-                        $(wrapper).append(fieldHtml)
-                    }
-                });
-                $(wrapper).on('click','.remove',function(e){
-                    e.preventDefault()
-                    $(this).parent('div').remove();
-                    x--;
-                })
-                inputGuru.addEventListener('input',()=>{
-                    inputNameProfile.value =inputGuru.value
-                })
-    $('#modal-add').modal('show')
-    let formAdd =$('#formAdd');
-    let inputGambar = formAdd.find('#gambar');
-    let inputPhoto = formAdd.find('#photo');
 
-    formAdd.on('submit',function(e){
-        e.preventDefault()
-        let formArray =formAdd.serializeArray();
-        let formData = new FormData();
-        formArray.forEach(item => {
-            console.log(item.name);
-            formData.append(item.name,item.value)
-        });
-        formData.append('gambar',inputGambar[0].files[0])
-        formData.append('photo',inputPhoto[0].files[0])
-        makeAjaxRequest('add',formData)
-             .then((data)=>{
-                console.log(data.data);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Data Updated',
-                    text: data.message,
-                }).then((result)=>{
-                    if (result.isConfirmed) {
-                        formReset('modal-add','formAdd');
-                        $('#renderKelas').html(data.html);
-                    }
-                })
-             })
-             .catch((erro)=>{console.log(erro);})
-    })
+    form('addkelas')
+        .done((data)=>{
+            $('#modal-content-add').html(data.html)
+            let inputGuru =document.getElementById('guru');
+            let inputNameProfile =document.getElementById('namaPemateri');
+            $('#summernote').summernote({
+                placeholder: 'Isi Disnini',
+                tabsize: 2,
+                focus: true,
+                // airMode: true,
+                height: 100
+            });
+            $('#summernoteProfile').summernote({
+                    placeholder: 'Isi Disnini',
+                    tabsize: 2,
+                    focus: true,
+                    // airMode: true,
+                    height: 100
+            });
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'idmapelo',
+                name: 'categorise_id',
+                value: $(this).data('id'),
+                readonly: true
+            }).appendTo('form');
+            let addButton=$('.add');
+                        let maxCount =10;
+                        let x =1;
+                        let wrapper =$('.wrapper');
+                        let fieldHtml=`
+                            <div class="d-flex justify-content-between gap-1 mt-2">
+                                    <input name="kurikulum[]" id="" type="text" placeholder="Name" class="required-entry form-control">
+                                    <a class="btn btn-danger remove" href="javascript:void()0" >Remove</a>
+                            </div>
+                        `;
+                        $(addButton).click(function(e){
+                            e.preventDefault();
+                            console.log('hellos');
+                            if(x < maxCount){
+                                x++;
+                                // console.log(wrapper);
+                                $(wrapper).append(fieldHtml)
+                            }
+                        });
+                        $(wrapper).on('click','.remove',function(e){
+                            e.preventDefault()
+                            $(this).parent('div').remove();
+                            x--;
+                        })
+                        inputGuru.addEventListener('input',()=>{
+                            inputNameProfile.value =inputGuru.value
+                        })
+            $('#modal-add').modal('show')
+            // proses kirim
+            let formAdd =$('#formAdd');
+            let inputGambar = formAdd.find('#gambar');
+            let inputPhoto = formAdd.find('#photo');
+
+            formAdd.on('submit',function(e){
+                e.preventDefault()
+                let formArray =formAdd.serializeArray();
+                let formData = new FormData();
+                formArray.forEach(item => {
+                    console.log(item.name);
+                    formData.append(item.name,item.value)
+                });
+                formData.append('gambar',inputGambar[0].files[0])
+                formData.append('photo',inputPhoto[0].files[0])
+                makeAjaxRequest('add',formData)
+                    .then((data)=>{
+                        console.log(data);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data Updated',
+                            text: data.message,
+                        }).then((result)=>{
+                            if (result.isConfirmed) {
+                                formReset('modal-add','formAdd');
+                                $('#renderKelas').html(data.html);
+                            }
+                        })
+                    })
+                    .catch((erro)=>{console.log(erro);})
+            })
+        })
+        .fail((error)=>{console.log(error);})
+
 })
 
 // btn-delete
@@ -118,8 +125,26 @@ $('#renderKelas').on('click','.btn-edit',function(e){
     e.preventDefault();
     form('editkelas',$(this).data('slug'))
      .done((data)=>{
-        console.log(data);
+        // console.log(data);
         $('#modal-content').html(data.html);
+
+        //written by : afdhalluthfi09, plugin summernote;
+        $('#summernoteEdit').summernote({
+            placeholder: 'Isi Disnini',
+            tabsize: 2,
+            focus: true,
+            // airMode: true,
+            height: 100
+        });
+        $('#summernoteProfileEdit').summernote({
+                placeholder: 'Isi Disnini',
+                tabsize: 2,
+                focus: true,
+                // airMode: true,
+                height: 100
+        });
+
+        //written by : afdhalluthfi09,prosess add kurikum;
         let addButton=$('.add');
         let maxCount =10;
         let x =1;
@@ -148,8 +173,34 @@ $('#renderKelas').on('click','.btn-edit',function(e){
      })
      .fail((error)=>{console.log(error);})
 })
+// button submit
+$(document).on('submit','#formEdit',function(e){
+    e.preventDefault();
+    // console.log($('#formEdit').serializeArray());
+    let formAdd =$('#formEdit');
+    let inputGambar = formAdd.find('#gambar');
+    let inputPhoto = formAdd.find('#photo');
+    let dataArray = $('#formEdit').serializeArray();
+    let form = new FormData();
+    for(let i =0; i < dataArray.length; i++){
+        form.append(dataArray[i].name,dataArray[i].value);
+    }
+    form.append('gambar',inputGambar[0].files[0])
+    form.append('photo',inputPhoto[0].files[0])
+    /* for (const pair of form.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+    } */
+    makeAjaxRequest('edit',form)
+            .then((data)=>{$('#renderKelas').html(data.html);})
+            .catch((erro)=>{console.info('error',erro);});
+})
+$('.btn-cancel').on('click',function(){
+    $('#modal-content').empty()
+    $('#modal-content-add').empty()
+})
 
 //written by : afdhalluthfi09,func for enpoint;
+
 function makeAjaxRequest(mode=null, data=null){
     if(mode == 'add'){
         return new Promise((resolve, reject) => {
@@ -178,9 +229,12 @@ function makeAjaxRequest(mode=null, data=null){
     }else if(mode == 'edit'){
         return new Promise((resolve,reject)=>{
             $.ajax({
-                url:'http://enpoint.com',
+                url:'http://sekolahskillapi.test/api/kelas/' + data.get('id'),
                 type:"POST",
                 data:data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
                 beforeSend: function () {
                     Swal.fire({
                         title: "Please Wait !",
@@ -247,6 +301,11 @@ function form(mode =null,data=null){
             url: "http://admin-skill.test/form/edit-kelas/"+data,
             type:"GET",
         })
+    }else if(mode == 'addkelas'){
+        return $.ajax({
+            url:"http://admin-skill.test/form/add-kelas",
+            type:"GET"
+        });
     }
 }
 
@@ -255,3 +314,4 @@ function formReset(idModal,idForm){
     $(`#${idModal}`).modal('hide')
     $(`#${idForm}`)[0].reset();
 }
+

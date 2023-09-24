@@ -66,10 +66,15 @@ class KelasController extends Controller
         $data =Http::acceptJson()->get(config('services.api.local').'/kelas/by-category',[
             "kategory"=>$slug
         ]);
+        $dataKategori =Http::acceptJson()->get(config('services.api.local').'/categories/detail/'.$slug);
 
-        if($data->successful()){
+        // dd($dataKategori->json());
+
+        if($data->status() == 202){
             // dd($data->json());
-            return view('pages.kelas.kelas',["kelas"=>$data->json(),'slug'=>$slug]);
+            return view('pages.kelas.kelas',["kelas"=>$data->json(),'slug'=>$slug,'kategori'=>$dataKategori->json()]);
+        }elseif($data->status() == 404){
+            return view('pages.kelas.kelas',["kelas"=>[],'slug'=>$slug,'kategori'=>$dataKategori->json()]);
         }else{
             dd($data->failed());
         }
@@ -102,7 +107,7 @@ class KelasController extends Controller
     public function showListKelas($slug) {
         // dd($this->youtube->getListYoutube($slug));
         return view('pages.kelas.listkelas',with([
-            'yt' =>$this->youtube->getListYoutube($slug),
+            'listItem' =>$this->youtube->getListItemsYoutube(),
         ]));
     }
     public function detailEvent()
@@ -373,5 +378,9 @@ class KelasController extends Controller
                 'message' => $e->getMessage()
             ], Response::HTTP_BAD_REQUEST);
         }
+    }
+
+    public function ajaxVidoe ($idplaylist) {
+        echo json_encode(["succsess"=>true,"data"=>$this->youtube->playVideo($idplaylist)]);
     }
 }

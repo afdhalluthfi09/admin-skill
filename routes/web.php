@@ -44,6 +44,8 @@ Route::group(['prefix'=>'kelas',"middleware"=>[AuthChek::class]],function() {
     Route::post('/deletKelas', [KelasController::class, 'deletKelas'])->name('kelas.deletKelas');
     Route::get('/listkelas/{idhash}',[KelasController::class,'showListKelas'])->name('kelas.listkelas');
     Route::get('/datail',[KelasController::class,'detailEvent'])->name('kelas.detail');
+
+    route::post('ajax-video-player/{idplaylist}',[KelasController::class,'ajaxVidoe'])->name('kelas.video.player');
 });
 
 Route::group(["prefix"=>'artikel',"middleware"=>[AuthChek::class]],function(){
@@ -89,6 +91,9 @@ Route::group(["prefix"=>'loker',"middleware"=>[AuthChek::class]],function(){
 
 Route::group(["prefix"=>'form',"middleware"=>[AuthChek::class]],function(){
     Route::get('edit-kelas/{slug}',[FormController::class,'formEditKelas']);
+    Route::get('add-kelas',[FormController::class,'formAddKelas']);
+    Route::get('add-user',[FormController::class,'formAddUser']);
+    Route::get('add-artikel',[FormController::class,'formAddArtikel']);
 });
 
 Route::get('keluar',function(){

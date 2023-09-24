@@ -32,6 +32,7 @@
                                 <option selected="selected">Pilih Status</option>
                                 <option>Kelas</option>
                                 <option>Events</option>
+                                <option>Online</option>
                             </select>
                           </div>
                         </div>

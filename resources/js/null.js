@@ -41,7 +41,7 @@ $('#formAddCategory').on('submit',function(e){
       .catch(error =>{console.log(error);})
 });
 // delete-categori
-$('.btn-delete').on('click',function(){
+$('#cardCategory').on('click','.btn-delete',function(){
     $('<input>').attr({
             type: 'hidden',
             id: 'idmapelo',

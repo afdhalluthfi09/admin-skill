@@ -31,10 +31,13 @@
                                 <div class="form-group">
                                     <label>Event</label>
                                     <select id="addStatus" class="form-control select2" name="type"
-                                        style="width: 100%;" required>
-                                        <option selected="selected">Pilih Status</option>
-                                        <option>{{ $status }}</option>
-                                    </select>
+                                    style="width: 100%;" required>
+                                    <option>Pilih Status</option>
+                                    @foreach ($status as $item)
+                                        <option
+                                            value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+                                    @endforeach
+                                </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -195,7 +198,6 @@
         </section>
     </div>
     <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
 </form>

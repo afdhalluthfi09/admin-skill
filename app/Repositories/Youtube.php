@@ -68,4 +68,38 @@ class Youtube
 
         }
     }
+    public function getListItemsYoutube()
+    {
+        $response =Http::withHeaders([
+            'Accept'=>'appplication/json',
+        ])
+        ->get('https://www.googleapis.com/youtube/v3/playlistItems',[
+            'part'=>'contentDetails,snippet,status',
+            'playlistId'=>'PLvhdCgCoHXAKwdfrpmYzlG8ojuGr14FzI',
+            'key'=>'AIzaSyA1dXY9lPe9zi264_4TzJ6D_DQu344xV8k',
+            'maxResults'=>5
+
+        ]);
+        if($response->successful()){
+            return $response->collect(['items']);
+        }else{
+            return $response->failed();
+        }
+    }
+
+    public function playVideo ($request)
+    {
+        $response = Http::withHeaders([ 'Accept'=> 'application/json'])
+            ->get('https://www.googleapis.com/youtube/v3/videos',[
+                'part'=>'snippet,contentDetails,statistics,player',
+                'id'=>$request,
+                'key'=>'AIzaSyA1dXY9lPe9zi264_4TzJ6D_DQu344xV8k'
+            ]);
+
+        if($response->successful()){
+            return $response->collect('items');
+        }else{
+            return $response->failed();
+        }
+    }
 }

@@ -49,7 +49,7 @@
                                   <div class="row">
                                     <div class="col-sm-4 border-right">
                                       <div class="description-block">
-                                        <h5 class="description-header">{{$kategori['jumlahkelas']}}</h5>
+                                        <h5 class="description-header">{{$kategori['jumlahkelas'][$item['name']]}}</h5>
                                         @if ($item['status'] == 'Kelas')
                                           <span class="description-text">Kelas</span>
                                         @elseif ($item['status'] == 'Events')

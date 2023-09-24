@@ -1,4 +1,7 @@
-<x-dashboard-layout  page={{$page}}>
+<x-ladmin>
+    @push('vite')
+        @vite(['resources/js/artikel.js'])
+    @endpush
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -6,7 +9,7 @@
               {{-- @dump($artikel) --}}
                 <div class="d-flex ml-2 mr-2 mt-2 px-2 py-2">
                     <h1 class="h3 mb-4 text-gray-800">{{__('artikel')}}</h1>
-                    <a role="button" href="{{ route('artikel.add') }}" class="button ml-auto">
+                    <a role="button" href="#" id="addArtikel" class="button ml-auto">
                       Tambah Artikel
                     </a>
                 </div>
@@ -32,24 +35,12 @@
           </div>
         </div>
     </div>
-    <x-modals.modal type='modal-lg' judul='Hapus Artikel' class="modal-md">
-      @include('pages.artikel.part.deleteKelas')
+    <x-modals.modal type='modal-lg' judul='form' class="modal-md">
+        <div id="modal-content"></div>
+        <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Batal</button>
     </x-modals.modal>
-    @push('scripts')
-      <script>
-        $(document).ready(function(){
-          console.log('ready');
-          $('.btn-hapus').click(function(){
-            $('#modal-lg').modal('show');
-            $('<input>').attr({
-                      type: 'hidden',
-                      id: 'idmapelo',
-                      name: 'id',
-                      value: $(this).data('id'),
-                      readonly: true
-                }).appendTo('form');
-          })
-          })
-      </script>
-    @endpush
-</x-dashboard-layout>
+    @push('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('summernote/summernote-bs4.js') }}"></script>
+  @endpush
+</x-ladmin>

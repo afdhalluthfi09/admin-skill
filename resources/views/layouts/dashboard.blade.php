@@ -114,5 +114,5 @@
     <script src="{{ asset('dist/js/demo.js') }} "></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('summernote/summernote-bs4.js') }}"></script>
-
+    @stack('script')
 </body>

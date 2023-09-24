@@ -1,6 +1,7 @@
-<form action="{{ route('kelas.updateKelas') }}" method="post" enctype='multipart/form-data' id="formEdit">
+<form enctype='multipart/form-data' id="formEdit">
     @csrf
-    <div class="modal-body">
+    <input type="hidden" name="id" value="{{$kelas['id']}}" />
+    <div id="modalEditForm" class="modal-body">
         {{-- kelas --}}
         <section class="content">
             <div class="container-fluid">
@@ -51,8 +52,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tanggal Kelas</label>
-                                    <input type="date" value="{{ $kelas['jadwal'] }}" class="form-control"
-                                        id="jadwal" name="jadwal" placeholder="ex: tanggal" required>
+                                    <input type="date" value="{{ \Carbon\Carbon::parse($kelas['jadwal'])->format('Y-m-d') }}"
+                                            class="form-control" id="jadwal" name="jadwal" placeholder="ex: tanggal" required>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -65,8 +67,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Poster</label>
-                                    <input type="file" class="form-control" id="gambar" name="gambar"
-                                        placeholder="ex: gambar" required>
+                                    @if ($kelas['gambar'] == null)
+                                        <input type="file" class="form-control" id="gambar" name="gambar"
+                                            placeholder="ex: gambar">
+                                    @else
+                                        <img src="http://image-sekolahskill.test/{{$kelas['gambar']}}" alt="" sizes="200px" srcset="">
+                                        <input type="file" class="form-control mt-2" id="gambar" name="gambar" placeholder="ex: gambar">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -80,7 +87,7 @@
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <label>Deskirpsi</label>
-                                <textarea name="description" id="summernote">{{ $kelas['description'] }}</textarea>
+                                <textarea name="description" id="summernoteEdit">{{ $kelas['description'] }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -139,13 +146,18 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="form-label">Photo</label>
-                                <input type="file" class="form-control" id="photo" name="photo">
+                                @if ($kelas['profil']['data']['photo'] == null)
+                                    <input type="file" class="form-control" id="photo" name="photo">
+                                @else
+                                    <img src="http://image-sekolahskill.test/{{$kelas['profil']['data']['photo']}}" alt="photo" sizes="200px" srcset="">
+                                    <input type="file" class="form-control mt-2" id="photo" name="photo">
+                                @endif
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="form-label">Deskirpsi</label>
-                                <textarea id="summernoteProfile" name="deskripsi">{{ $kelas['profil']['data']['deskripsi'] }}</textarea>
+                                <textarea id="summernoteProfileEdit" name="deskripsi">{{ $kelas['profil']['data']['deskripsi'] }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -214,7 +226,6 @@
         </section>
     </div>
     <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
 </form>

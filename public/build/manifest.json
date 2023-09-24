@@ -1,37 +1,52 @@
 {
-  "resources/img/bg_hp.png": {
-    "file": "assets/bg_hp.7128951a.png",
-    "src": "resources/img/bg_hp.png"
-  },
   "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
-    "file": "assets/bootstrap-icons.966620f9.woff2",
+    "file": "assets/bootstrap-icons.cfe45b98.woff2",
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
-  },
-  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
-    "file": "assets/bootstrap-icons.c6569d46.woff",
-    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
   },
   "resources/img/bg_dekstop.png": {
     "file": "assets/bg_dekstop.c0a523fe.png",
     "src": "resources/img/bg_dekstop.png"
   },
-  "resources/js/app.js": {
-    "file": "assets/app.cc21d397.js",
-    "src": "resources/js/app.js",
-    "isEntry": true
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
+    "file": "assets/bootstrap-icons.999550fa.woff",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
+  },
+  "resources/img/bg_hp.png": {
+    "file": "assets/bg_hp.7128951a.png",
+    "src": "resources/img/bg_hp.png"
   },
   "resources/js/null.js": {
-    "file": "assets/null.71cd9388.js",
+    "file": "assets/null.fd446d70.js",
     "src": "resources/js/null.js",
     "isEntry": true
   },
+  "resources/js/kelas.js": {
+    "file": "assets/kelas.8335ff06.js",
+    "src": "resources/js/kelas.js",
+    "isEntry": true
+  },
+  "resources/js/user.js": {
+    "file": "assets/user.d69b65d5.js",
+    "src": "resources/js/user.js",
+    "isEntry": true
+  },
+  "resources/js/artikel.js": {
+    "file": "assets/artikel.67a66bbf.js",
+    "src": "resources/js/artikel.js",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app.4f0a88bd.js",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
   "resources/css/app.css": {
-    "file": "assets/app.28ca7c9c.css",
+    "file": "assets/app.fb31c634.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/scss/app.scss": {
-    "file": "assets/app.90162d08.css",
+    "file": "assets/app.5bf6f38b.css",
     "src": "resources/scss/app.scss",
     "isEntry": true
   }
