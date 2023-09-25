@@ -1,3 +1,5 @@
+let baseUrl = import.meta.env.VITE_APP_LOCAL;
+
 $('#modalAdd').on('click',function(e){
     e.preventDefault();
 
@@ -205,7 +207,7 @@ function makeAjaxRequest(mode=null, data=null){
     if(mode == 'add'){
         return new Promise((resolve, reject) => {
             $.ajax({
-                url:'http://sekolahskillapi.test/api/kelas',
+                url:baseUrl+'/kelas',
                 type:"POST",
                 data:data,
                 dataType: 'json',
@@ -229,7 +231,7 @@ function makeAjaxRequest(mode=null, data=null){
     }else if(mode == 'edit'){
         return new Promise((resolve,reject)=>{
             $.ajax({
-                url:'http://sekolahskillapi.test/api/kelas/' + data.get('id'),
+                url:baseUrl+'/kelas/' + data.get('id'),
                 type:"POST",
                 data:data,
                 dataType: 'json',
@@ -253,7 +255,7 @@ function makeAjaxRequest(mode=null, data=null){
     }else if(mode == 'delete'){
         return new Promise((resolve,reject)=>{
             $.ajax({
-                url:"http://sekolahskillapi.test/api/kelas/"+data.kelas_id,
+                url:baseUrl+"/kelas/"+data.kelas_id,
                 type:"DELETE",
                 data:{category:data.category},
                 beforeSend: function () {
@@ -274,7 +276,7 @@ function makeAjaxRequest(mode=null, data=null){
     }else if(mode == 'detail'){
         return new Promise((resolve,reject)=>{
             $.ajax({
-                url:"http://sekolahskillapi.test/api/kelas/"+data.slug,
+                url:baseUrl+"/api/kelas/"+data.slug,
                 type:"GET",
                 beforeSend: function () {
                     Swal.fire({

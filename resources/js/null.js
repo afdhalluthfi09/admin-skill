@@ -1,3 +1,5 @@
+let baseUrl = import.meta.env.VITE_APP_LOCAL;
+
 $(document).ready(function(){
     console.log('hellos');
     $('.btn-edit').click(function(){
@@ -67,7 +69,7 @@ function makeAjaxRequest(mode=null, data=null) {
     if(mode == 'add'){
         return new Promise(function (resolve, reject) {
             $.ajax({
-                url: 'http://sekolahskillapi.test/api/categories', // Ganti dengan URL yang sesuai
+                url: baseUrl+'/categories', // Ganti dengan URL yang sesuai
                 type: 'POST', // Ubah metode ke POST
                 data: data, // Kirim data yang ingin Anda kirimkan
                 success: function (data) {
@@ -81,7 +83,7 @@ function makeAjaxRequest(mode=null, data=null) {
     }else if(mode == 'update'){
         return new Promise(function(resolve,reject){
             $.ajax({
-                url:'http://sekolahskillapi.test/api/categories/update',
+                url:baseUrl+'/categories/update',
                 type:'POST',
                 data:data,
                 success:function(data){
@@ -95,7 +97,7 @@ function makeAjaxRequest(mode=null, data=null) {
     }else if(mode == 'delete'){
         return new Promise(function(resolve,reject){
             $.ajax({
-                url:'http://sekolahskillapi.test/api/categories/delete',
+                url:baseUrl+'/categories/delete',
                 type:"POST",
                 data:data,
                 success:function(data){

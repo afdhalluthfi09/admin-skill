@@ -75,7 +75,7 @@ class AuthenticatedSessionController extends Controller
         }else {
             try {
                 //code...
-                $response = Http::post('http://sekolahskillapi.test/api/admin/login', [
+                $response = Http::post(config('services.api.local').'/admin/login', [
                     'email' => $request->email,
                     'password' =>$request->password
                 ]);

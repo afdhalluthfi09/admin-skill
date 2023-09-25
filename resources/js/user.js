@@ -1,7 +1,8 @@
+let baseUrl = import.meta.env.VITE_APP_LOCAL;
 let tableUser=$('#table-user').DataTable({
     dom: 'Bfrtip',
     ajax: {
-        "url": "http://sekolahskillapi.test/api/user",
+        "url": baseUrl+"/user",
         "type": "GET"
     },
     searching: true,
