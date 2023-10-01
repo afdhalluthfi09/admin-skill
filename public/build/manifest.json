@@ -1,22 +1,22 @@
 {
-  "resources/img/bg_hp.png": {
-    "file": "assets/bg_hp.7128951a.png",
-    "src": "resources/img/bg_hp.png"
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons.cfe45b98.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/img/bg_dekstop.png": {
     "file": "assets/bg_dekstop.c0a523fe.png",
     "src": "resources/img/bg_dekstop.png"
   },
-  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
-    "file": "assets/bootstrap-icons.cfe45b98.woff2",
-    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
+  "resources/img/bg_hp.png": {
+    "file": "assets/bg_hp.7128951a.png",
+    "src": "resources/img/bg_hp.png"
   },
   "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
     "file": "assets/bootstrap-icons.999550fa.woff",
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
   },
   "resources/js/null.js": {
-    "file": "assets/null.2713f368.js",
+    "file": "assets/null.deb94343.js",
     "src": "resources/js/null.js",
     "isEntry": true
   },
@@ -41,7 +41,7 @@
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.cd10b1c9.css",
+    "file": "assets/app.48ba6be1.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },

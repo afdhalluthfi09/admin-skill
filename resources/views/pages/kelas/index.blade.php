@@ -33,8 +33,8 @@
                                         <div class="dropdown-divider"></div>
                                         <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-target="#modal-delete-category" data-id="{{$item['id']}}" >Hapus</a>
                                         <div class="dropdown-divider"></div>
-                                        <form action="{{ route('kelas.show', ['slug'=>$item['slug']]) }}" method="get">
-                                            @csrf
+                                        <form id="formLihat">
+                                            <input type="hidden" id="slug" name="slug" value="{{$item['slug']}}"/>
                                             <button type="submit" class="dropdown-item dropdown-header">Lihat</button>
                                         </form>
                                     </div>

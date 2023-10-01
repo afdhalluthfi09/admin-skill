@@ -1,5 +1,5 @@
 let baseUrl = import.meta.env.VITE_APP_LOCAL;
-
+let baseApp = import.meta.env.VITE_APP_URL;
 $(document).ready(function(){
     console.log('hellos');
     $('.btn-edit').click(function(){
@@ -44,6 +44,7 @@ $('#formAddCategory').on('submit',function(e){
 });
 // delete-categori
 $('#cardCategory').on('click','.btn-delete',function(){
+    console.log('submit barusxx`');
     $('<input>').attr({
             type: 'hidden',
             id: 'idmapelo',
@@ -64,6 +65,25 @@ $('#cardCategory').on('click','.btn-delete',function(){
                     })
       })
   })
+
+//redirec-halaman kelasbyCategory
+$('#formLihat').on('submit',function(e){
+    e.preventDefault();
+    let slug =$('#slug').val();
+    console.log(slug);
+    let urlListKelasByCat=baseUrl+'kelas/list/'+slug;
+    $.ajax({
+        type: 'GET', // Atau sesuaikan dengan metode Anda
+        url: urlListKelasByCat,
+        success: function(response) {
+            window.location.href = response.redirectTo; // Ganti dengan URL yang sesuai
+        },
+        error: function(error) {
+            // Penanganan kesalahan jika diperlukan
+        }
+    });
+});
+
 //written by : afdhalluthfi09,func enpoint;
 function makeAjaxRequest(mode=null, data=null) {
     if(mode == 'add'){
@@ -115,3 +135,4 @@ function formReset(idElement,idForm){
     $(`#${idElement}`).modal('hide');
     $(`#${idForm}`)[0].reset();
 }
+
