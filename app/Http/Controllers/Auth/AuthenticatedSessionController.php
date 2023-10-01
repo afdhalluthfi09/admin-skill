@@ -80,7 +80,7 @@ class AuthenticatedSessionController extends Controller
                     'password' =>$request->password
                 ]);
                 $data =$response->json();
-                dd($data);
+                // dd($data);
                 $dataResponse =$data["data"];
                 Session::put('user',$dataResponse);
                 Session::put('tokenId',$dataResponse["token"]);
