@@ -1,4 +1,5 @@
 let baseUrl = import.meta.env.VITE_APP_LOCAL;
+let baseUrlLocal = import.meta.env.VITE_APP_URL;
 
 $('#modalAdd').on('click',function(e){
     e.preventDefault();
@@ -300,12 +301,12 @@ function makeAjaxRequest(mode=null, data=null){
 function form(mode =null,data=null){
     if(mode == 'editkelas'){
         return $.ajax({
-            url: `${baseUrl}/form/edit-kelas/${data}`,
+            url: `${baseUrlLocal}/form/edit-kelas/${data}`,
             type:"GET",
         })
     }else if(mode == 'addkelas'){
         return $.ajax({
-            url:`${baseUrl}/form/add-kelas`,
+            url:`${baseUrlLocal}/form/add-kelas`,
             type:"GET"
         });
     }
