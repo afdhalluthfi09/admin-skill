@@ -300,12 +300,12 @@ function makeAjaxRequest(mode=null, data=null){
 function form(mode =null,data=null){
     if(mode == 'editkelas'){
         return $.ajax({
-            url: "http://admin-skill.test/form/edit-kelas/"+data,
+            url: `${baseUrl}/form/edit-kelas/${data}`,
             type:"GET",
         })
     }else if(mode == 'addkelas'){
         return $.ajax({
-            url:"http://admin-skill.test/form/add-kelas",
+            url:`${baseUrl}/form/add-kelas`,
             type:"GET"
         });
     }
