@@ -67,21 +67,13 @@ $('#cardCategory').on('click','.btn-delete',function(){
   })
 
 //redirec-halaman kelasbyCategory
-$('#formLihat').on('submit',function(e){
+$('#cardCategory').on('submit','.formLihat',function(e){
     e.preventDefault();
-    let slug =$('#slug').val();
-    console.log(slug);
-    let urlListKelasByCat=baseUrl+'kelas/list/'+slug;
-    $.ajax({
-        type: 'GET', // Atau sesuaikan dengan metode Anda
-        url: urlListKelasByCat,
-        success: function(response) {
-            window.location.href = response.redirectTo; // Ganti dengan URL yang sesuai
-        },
-        error: function(error) {
-            // Penanganan kesalahan jika diperlukan
-        }
-    });
+    let slug =$(this).find('.slug').val();
+    let urlListKelasByCat=`${baseApp}/kelas/list/${slug}`;
+    // console.log(urlListKelasByCat);
+    window.location.href = urlListKelasByCat; // Ganti dengan URL yang sesuai
+
 });
 
 //written by : afdhalluthfi09,func enpoint;

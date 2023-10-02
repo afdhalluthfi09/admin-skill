@@ -33,8 +33,8 @@
                                         <div class="dropdown-divider"></div>
                                         <a role="button" class="dropdown-item dropdown-header btn-delete" data-toggle="modal" data-target="#modal-delete-category" data-id="{{$item['id']}}" >Hapus</a>
                                         <div class="dropdown-divider"></div>
-                                        <form id="formLihat">
-                                            <input type="hidden" id="slug" name="slug" value="{{$item['slug']}}"/>
+                                        <form id="formLihat" class="formLihat">
+                                            <input type="hidden" id="slug" class="slug" name="slug" value="{{$item['slug']}}"/>
                                             <button type="submit" class="dropdown-item dropdown-header">Lihat</button>
                                         </form>
                                     </div>
@@ -65,8 +65,9 @@
                                     </div>
                                     <div class="col-sm-4">
                                       <div class="description-block">
-                                        <h5 class="description-header">35</h5>
-                                        <span class="description-text">PRODUCTS</span>
+                                        {{-- isi sesuatu --}}
+                                        <h5 class="description-header"></h5>
+                                        <span class="description-text"></span>
                                       </div>
                                       <!-- /.description-block -->
                                     </div>
