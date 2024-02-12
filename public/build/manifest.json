@@ -3,10 +3,6 @@
     "file": "assets/bootstrap-icons.bacd70af.woff2",
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
-  "resources/img/bg_hp.png": {
-    "file": "assets/bg_hp.7128951a.png",
-    "src": "resources/img/bg_hp.png"
-  },
   "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
     "file": "assets/bootstrap-icons.4d4572ef.woff",
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
@@ -15,18 +11,22 @@
     "file": "assets/bg_dekstop.c0a523fe.png",
     "src": "resources/img/bg_dekstop.png"
   },
+  "resources/img/bg_hp.png": {
+    "file": "assets/bg_hp.7128951a.png",
+    "src": "resources/img/bg_hp.png"
+  },
   "resources/js/null.js": {
-    "file": "assets/null.54a8d40d.js",
+    "file": "assets/null.ff5cc562.js",
     "src": "resources/js/null.js",
     "isEntry": true
   },
   "resources/js/kelas.js": {
-    "file": "assets/kelas.1941cf8b.js",
+    "file": "assets/kelas.95f01ec5.js",
     "src": "resources/js/kelas.js",
     "isEntry": true
   },
   "resources/js/user.js": {
-    "file": "assets/user.ae1daa23.js",
+    "file": "assets/user.b920046b.js",
     "src": "resources/js/user.js",
     "isEntry": true
   },
@@ -35,13 +35,18 @@
     "src": "resources/js/artikel.js",
     "isEntry": true
   },
+  "resources/js/event.js": {
+    "file": "assets/event.22ee3cf9.js",
+    "src": "resources/js/event.js",
+    "isEntry": true
+  },
   "resources/js/app.js": {
     "file": "assets/app.d3e500fe.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.b1c1feb1.css",
+    "file": "assets/app.0c827eb6.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
