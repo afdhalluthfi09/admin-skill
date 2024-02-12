@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/js/kelas.js',
                 'resources/js/user.js',
                 'resources/js/artikel.js',
+                'resources/js/event.js',
                 'resources/js/app.js',
             ],
             refresh:true

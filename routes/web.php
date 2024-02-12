@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Http\Controllers\{ArtikelController, EmailController, FormController, KelasController, LokerModelController, PembelianController, SopModelController, UsersController};
+use App\Http\Controllers\{ArtikelController, EmailController, EventController, FormController, KelasController, LokerModelController, PembelianController, SopModelController, UsersController};
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AuthChek;
 use Illuminate\Support\Facades\Route;
@@ -94,6 +94,15 @@ Route::group(["prefix"=>'form',"middleware"=>[AuthChek::class]],function(){
     Route::get('add-kelas',[FormController::class,'formAddKelas']);
     Route::get('add-user',[FormController::class,'formAddUser']);
     Route::get('add-artikel',[FormController::class,'formAddArtikel']);
+});
+
+Route::group(["prefix"=>'event',"middleware"=>[AuthChek::class]],function(){
+    Route::get('/',[EventController::class,'listEvent'])->name('event.list');
+    Route::get('add',[EventController::class,'addEvent'])->name('event.add');
+    Route::post('addEvent',[EventController::class,'addEvent'])->name('event.addEvent');
+    Route::get('edit/{slug}',[EventController::class,'editEvent'])->name('event.edit');
+    Route::post('editEvent/{id}',[EventController::class,'editEvent'])->name('event.editEvent');
+    Route::get('deleteEvent',[EventController::class,'deleteEvent'])->name('event.deleteEvent');
 });
 
 Route::get('keluar',function(){
