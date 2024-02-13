@@ -71,11 +71,36 @@ buttons: [
 })
 
 $('#table-event tbody').on('click', 'a', function(){
+    /* 
+        
+    event_description
+    event_image
+    
+    */
   let rowSelected = $(this).parents('tr');
   var rowData = table.row(rowSelected).data();
   let mode = $(this).attr('mode');
   if(mode == 'detail'){
     console.log('detail',rowData);
+    var html =null;
+    html =`<div class='row'>
+    <div class="col-md-7 py-1 px-1"> 
+      <img style="width:200px" class="img" src="http://image-sekolahskill.test/${rowData.event_image}"/>
+    </div>
+    <div class="col-md-5">
+      <ul>
+        <li>${rowData.event_name}</li>
+        <li>${rowData.event_pengisi}</li>
+        <li>${rowData.event_date}</li>
+        <li>${rowData.event_jam_mulai}</li>
+        <li>${rowData.event_jam_akhir}</li>
+        <li>${rowData.event_jabatan}</li>
+        <li>${rowData.event_type}</li>
+        <li>${rowData.event_location}</li>
+      </ul>
+    </div>
+    </div>`;
+    $('#detail-event').html(html);
     $('#detail').modal('show');
     // $('#detail #event_name').val(rowData.event_name);
     // $('#detail #event_date').val(rowData.event_date);
@@ -113,3 +138,11 @@ function edit(id){
 function hapus(id){
   console.log('hapus',id);
 }
+
+$('#event_description').summernote({
+    placeholder: 'Isi Disnini',
+    tabsize: 2,
+    focus: true,
+    // airMode: true,
+    height: 100
+});

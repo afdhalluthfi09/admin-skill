@@ -24,7 +24,11 @@
  </div>
  {{-- detail --}}
  <x-modals.modal type='detail' judul='detail' class="modal-md">
-     <div id="modal-content"></div>
+     <div id="modal-content">
+      <div id="detail-event" class="container">
+        
+      </div>
+     </div>
      <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Batal</button>
  </x-modals.modal>
  {{-- edit --}}
@@ -50,23 +54,23 @@
    <div class="container">
      <form class="form" id="form-event" enctype="multipart/form-data">
        <div class="form-group row">
-          <div class="col-md-6">
+          <div class="col-md-4">
              <label for="event_name">Nama Event</label>
              <input type="text" class="form-control" id="event_name" name="event_name" required>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
            <label for="event_pengisi">Pengisi</label>
            <input type="text" class="form-control" id="event_pengisi" name="event_pengisi" required>
           </div>
+          <div class="col-md-4">
+            <label for="event_image">Poster</label>
+            <input type="file" class="form-control" id="event_image" name="event_image" required>
+          </div>
        </div>
        <div class="form-group row">
-         <div class="col-md-6">
+         <div class="col-md-12">
             <label for="event_description">Deskripsi</label>
             <textarea class="form-control" id="event_description" name="event_description" required></textarea>
-         </div>
-         <div class="col-md-6">
-           <label for="event_image">Gambar</label>
-           <input type="file" class="form-control" id="event_image" name="event_image" required>
          </div>
        </div>
        <div class="form-group row">
