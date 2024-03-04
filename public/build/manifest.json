@@ -3,17 +3,17 @@
     "file": "assets/bootstrap-icons.bacd70af.woff2",
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
-  "resources/img/bg_hp.png": {
-    "file": "assets/bg_hp.7128951a.png",
-    "src": "resources/img/bg_hp.png"
+  "resources/img/bg_dekstop.png": {
+    "file": "assets/bg_dekstop.c0a523fe.png",
+    "src": "resources/img/bg_dekstop.png"
   },
   "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
     "file": "assets/bootstrap-icons.4d4572ef.woff",
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
   },
-  "resources/img/bg_dekstop.png": {
-    "file": "assets/bg_dekstop.c0a523fe.png",
-    "src": "resources/img/bg_dekstop.png"
+  "resources/img/bg_hp.png": {
+    "file": "assets/bg_hp.7128951a.png",
+    "src": "resources/img/bg_hp.png"
   },
   "resources/js/null.js": {
     "file": "assets/null.ff5cc562.js",
@@ -36,7 +36,7 @@
     "isEntry": true
   },
   "resources/js/event.js": {
-    "file": "assets/event.5ee907a8.js",
+    "file": "assets/event.9f4d2b81.js",
     "src": "resources/js/event.js",
     "isEntry": true
   },
@@ -46,7 +46,7 @@
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.0c827eb6.css",
+    "file": "assets/app.c5a6871a.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },

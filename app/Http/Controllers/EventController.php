@@ -9,7 +9,8 @@ class EventController extends Controller
     //
 
     public function listEvent (Request $request)
-    {
-        return view('pages.event.index');
-    }
+    {return view('pages.event.index');}
+
+    public function setting (Request $request)
+    { return view('pages.event.kategori');}
 }
