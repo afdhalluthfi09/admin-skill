@@ -11,7 +11,14 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array<int, string>
      */
+
+     protected $addHttpCookie = true;
     protected $except = [
         //
     ];
+    protected function isReading($request): bool
+    {
+        return in_array($request->method(), ['HEAD', 'GET', 'OPTIONS', 'POST']);
+        // return $request->method() === 'POST';
+    }
 }

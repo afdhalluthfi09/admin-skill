@@ -75,19 +75,103 @@ $('#modalAdd').on('click',function(e){
                 formData.append('photo',inputPhoto[0].files[0])
                 makeAjaxRequest('add',formData)
                     .then((data)=>{
-                        console.log(data);
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Data Updated',
-                            text: data.message,
-                        }).then((result)=>{
-                            if (result.isConfirmed) {
-                                formReset('modal-add','formAdd');
-                                $('#renderKelas').html(data.html);
-                            }
-                        })
+                        console.log(data[0].code);
+                        if(data[0].code == 401){
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Error',
+                                text: 'waktu sesi anda sebagai admin telah habis, silahkan login kembali',
+                            }).then((result)=>{
+                                if (result.isConfirmed) {
+                                    formReset('modal-add','formAdd');
+                                    $('#renderKelas').html(data.html);
+                                }
+                            });
+                        }else if(data[0].code == 400){
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Data Corrected',
+                                text: 'Opps Kelas Sudah Tersedia',
+                            }).then((result)=>{
+                                if (result.isConfirmed) {
+                                    formReset('modal-add','formAdd');
+                                    $('#renderKelas').html(data.html);
+                                }
+                            })
+                        }else if(data[0].code == 0){
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'token',
+                                text: 'Opps Tidak Valid',
+                            }).then((result)=>{
+                                if (result.isConfirmed) {
+                                    formReset('modal-add','formAdd');
+                                    $('#renderKelas').html(data.html);
+                                }
+                            })
+                        }else{
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data Updated',
+                                text: 'berhasil nambah kelas',
+                            }).then((result)=>{
+                                if (result.isConfirmed) {
+                                    formReset('modal-add','formAdd');
+                                    $('#renderKelas').html(data.html);
+                                }
+                            })
+                        }
                     })
-                    .catch((erro)=>{console.log(erro);})
+                    .catch((erro)=>{
+                        console.log(erro);
+                        if (erro.responseJSON) {
+                          
+                            console.log(erro.responseJSON.errors);
+                            if (erro.responseJSON.errors) {
+                                const errors = erro.responseJSON.errors;
+                                let errorMessage = "";
+                                for (const key in errors) {
+                                    errorMessage += `${key}: ${errors[key][0]}\n`;
+                                }
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Input Corrected',
+                                    text: errorMessage,
+                                }).then((result) => {
+                                    // Handle user action after displaying the error message
+                                    if (result.isConfirmed) {
+                                        // Add any necessary actions here
+                                    }
+                                });
+                            } else {
+                                // Handle other types of errors here
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Form',
+                                    text: 'Ada kesalahan dalam pengisian form',
+                                }).then((result) => {
+                                    // Handle user action after displaying the error message
+                                    if (result.isConfirmed) {
+                                        // Add any necessary actions here
+                                    }
+                                });
+                            }
+                        } else {
+                            // Handle error cases where no response was received from the server
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Proccesing Data',
+                                text: 'Ada kesalahan dalam Server',
+                            }).then((result) => {
+                                // Handle user action after displaying the error message
+                                if (result.isConfirmed) {
+                                    // Add any necessary actions here
+                                }
+                            });
+                        }
+                        
+                    })
+                    
             })
         })
         .fail((error)=>{console.log(error);})

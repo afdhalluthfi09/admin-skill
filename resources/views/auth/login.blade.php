@@ -14,7 +14,7 @@
 
             <!-- Email Address -->
             <div>
-                <x-input-label for="email" :value="__('EmPOSTail')" />
+                <x-input-label for="email" :value="__('Email')" />
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
@@ -52,10 +52,10 @@
                 </x-primary-button>
             </div>
         </form>
-        {{-- <form method="GET" action="http://sekolahskillapi.test/oauth/google">
+        <form method="GET" action="http://sekolahskillapi.test/oauth/google">
             <x-primary-button class="ml-3">
                 {{ __('Log in') }} By Google
             </x-primary-button>
-        </form> --}}
+        </form>
     </x-auth-card>
 </x-guest-layout>

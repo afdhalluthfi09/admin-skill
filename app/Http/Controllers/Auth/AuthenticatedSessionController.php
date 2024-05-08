@@ -56,49 +56,50 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 
-    // public function masuk (Request $request)
-    // {
-    //     dd($request->all());
+    public function masuk (Request $request)
+    {
+        
 
-    //     $validate = Validator::make($request->all(),[
-    //         "email" =>"required|email",
-    //         "password" =>"required"
-    //     ]);
+        $validate = Validator::make($request->all(),[
+            "email" =>"required|email",
+            "password" =>"required"
+        ]);
 
-    //     if($validate->fails())
-    //     {
-    //         return response()->json([
-    //             "success" => false,
-    //             "message" => "Ada Yang Salah",
-    //             "data" =>$validate->errors()
-    //         ]);
-    //     }else {
-    //         try {
-    //             //code...
-    //             $response = Http::post(config('services.api.local').'/admin/login', [
-    //                 'email' => $request->email,
-    //                 'password' =>$request->password
-    //             ]);
-    //             $data =$response->json();
-    //             // dd($data);
-    //             $dataResponse =$data["data"];
-    //             Session::put('user',$dataResponse);
-    //             Session::put('tokenId',$dataResponse["token"]);
-    //             // dd($response->ok());
-    //             if($response->successful())
-    //             {
-    //                 return redirect()->route('dashboard');
-    //             }else{
-    //                 return response()->json([
-    //                     "data" =>"belum cocok"
-    //                 ]);
-    //             }
-    //         } catch (\Throwable $th) {
-    //             //throw $th;
-    //             dd($th);
-    //         }
-    //     }
+        if($validate->fails())
+        {
+            return response()->json([
+                "success" => false,
+                "message" => "Ada Yang Salah",
+                "data" =>$validate->errors()
+            ]);
+        }else {
+            try {
+                //code...
+                $response = Http::post(config('services.api.local').'/admin/login', [
+                    'email' => $request->email,
+                    'password' =>$request->password
+                ]);
+                $data =$response->json();
+                // dd($data);
+                $dataResponse =$data["data"];
+                Session::put('user',$dataResponse);
+                Session::put('tokenId',$dataResponse["token"]);
+                Session::save();
+                if($response->successful())
+                {
+                    
+                    return redirect()->route('dashboard');
+                }else{
+                    return response()->json([
+                        "data" =>"belum cocok"
+                    ]);
+                }
+            } catch (\Throwable $th) {
+                //throw $th;
+                dd($th);
+            }
+        }
 
 
-    // }
+    }
 }
