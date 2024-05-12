@@ -9,7 +9,7 @@
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <form method="post" action="{{ route('masuk') }}">
+        <form method="POST" action="{{ route('masuk') }}">
             @csrf
 
             <!-- Email Address -->
@@ -45,17 +45,11 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-               
-                
+
                 <x-primary-button class="ml-3">
                     {{ __('Log in') }}
                 </x-primary-button>
             </div>
-        </form>
-        <form method="GET" action="http://sekolahskillapi.test/oauth/google">
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }} By Google
-            </x-primary-button>
         </form>
     </x-auth-card>
 </x-guest-layout>

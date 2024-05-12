@@ -103,6 +103,7 @@ Route::group(["prefix"=>'event',"middleware"=>[AuthChek::class]],function(){
     Route::get('edit/{slug}',[EventController::class,'editEvent'])->name('event.edit');
     Route::post('editEvent/{id}',[EventController::class,'editEvent'])->name('event.editEvent');
     Route::get('deleteEvent',[EventController::class,'deleteEvent'])->name('event.deleteEvent');
+    Route::get('setting',[EventController::class,'setting'])->name('event.setting');
 });
 
 Route::get('keluar',function(){
