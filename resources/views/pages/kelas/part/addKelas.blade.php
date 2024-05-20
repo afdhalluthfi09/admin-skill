@@ -1,5 +1,6 @@
 <form id="formAdd" method="post" enctype='multipart/form-data'>
     @csrf
+    <input type="hidden" name="tokenId" value="{{$token}}">
     <div class="modal-body">
         {{-- kelas --}}
         <section class="content">

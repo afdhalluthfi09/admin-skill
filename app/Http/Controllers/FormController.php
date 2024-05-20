@@ -36,8 +36,10 @@ class FormController extends Controller
         $kategori=Http::acceptJson()->get(config('services.api.local').'/categories');
         $dataKategori=$kategori->json()['data'];
         View::composer('pages.kelas.part.addKelas',function($view)use($dataKategori){
-            // dd($dataDeatilKelas);
-            $view->with(['status'=>$dataKategori]);
+            $view->with([
+                'status'=>$dataKategori,
+                'token' =>session()->get('tokenId')
+            ]);
         });
         $render = view('pages.kelas.part.addKelas')->render();
         return response()->json(['html'=>$render],Response::HTTP_ACCEPTED);

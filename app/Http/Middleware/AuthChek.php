@@ -18,6 +18,7 @@ class AuthChek
      */
     public function handle(Request $request, Closure $next)
     {
+        //dd($request->session()->all(),'masuk');
         if(Session::has('tokenId')){
             return $next($request);
         }

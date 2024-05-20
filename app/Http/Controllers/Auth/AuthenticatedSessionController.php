@@ -101,4 +101,33 @@ class AuthenticatedSessionController extends Controller
 
 
     }
+
+    public function callback (Request $request) 
+    {
+        $token = $request->query('token');
+        try {
+            //code...
+            $response = Http::post(config('services.api.local').'/admin/user', [
+                'token' => $token,
+            ]);
+            $data =$response->json();
+            $dataResponse =$data["data"];
+            
+            session(['tokenId' => $dataResponse["token"]]);
+            session(['user' => $dataResponse]);
+            
+            if($response->successful())
+            {
+                return redirect()->route('dashboard');
+            }else{
+                return response()->json([
+                    "data" =>"belum cocok"
+                ]);
+            }
+        } catch (\Exception $th) {
+            //throw $th;
+            dd($th);
+        }
+        
+    }
 }

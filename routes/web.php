@@ -22,9 +22,9 @@ Route::get('/', function () {
     return view('welcome',with(['pages'=>'Home']));
 });
 
-Route::middleware([AuthChek::class])->get('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard')->middleware([AuthChek::class]);
 
 Route::prefix('profile')->group(function () {
     Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');

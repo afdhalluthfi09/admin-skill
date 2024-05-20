@@ -59,7 +59,7 @@
     <div id="modal-content-add"></div>
     <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Batal</button>
   </x-modals.modal>
-<x-modals.modal type='modal-edit' judul='Buat Kelas' class="modal-lg">
+<x-modals.modal type='modal-edit' judul='Edit Kelas' class="modal-lg">
     <div id="modal-content"></div>
     <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Batal</button>
   </x-modals.modal>
