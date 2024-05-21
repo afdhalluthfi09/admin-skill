@@ -75,7 +75,7 @@ $('#modalAdd').on('click',function(e){
                 formData.append('photo',inputPhoto[0].files[0])
                 makeAjaxRequest('add',formData)
                     .then((data)=>{
-                        console.log(data[0].code);
+                        console.log(data);
                         if(data[0].code == 401){
                             Swal.fire({
                                 icon: 'warning',
@@ -125,7 +125,7 @@ $('#modalAdd').on('click',function(e){
                     .catch((erro)=>{
                         //console.log(erro);
                         if (erro.responseJSON) {
-                          
+
                             //console.log(erro.responseJSON.errors);
                             if (erro.responseJSON.errors) {
                                 const errors = erro.responseJSON.errors;
@@ -167,9 +167,9 @@ $('#modalAdd').on('click',function(e){
                                 }
                             });
                         }
-                        
+
                     })
-                    
+
             })
         })
         .fail((error)=>{console.log(error);})

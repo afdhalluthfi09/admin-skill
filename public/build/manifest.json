@@ -1,11 +1,11 @@
 {
-  "resources/img/bg_dekstop.png": {
-    "file": "assets/bg_dekstop.c0a523fe.png",
-    "src": "resources/img/bg_dekstop.png"
-  },
   "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
     "file": "assets/bootstrap-icons.bacd70af.woff2",
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
+  },
+  "resources/img/bg_dekstop.png": {
+    "file": "assets/bg_dekstop.c0a523fe.png",
+    "src": "resources/img/bg_dekstop.png"
   },
   "resources/img/bg_hp.png": {
     "file": "assets/bg_hp.7128951a.png",
@@ -21,7 +21,7 @@
     "isEntry": true
   },
   "resources/js/kelas.js": {
-    "file": "assets/kelas.84abe76e.js",
+    "file": "assets/kelas.6257f9ff.js",
     "src": "resources/js/kelas.js",
     "isEntry": true
   },
@@ -45,14 +45,14 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
-  "resources/scss/app.scss": {
-    "file": "assets/app.bd772e3d.css",
-    "src": "resources/scss/app.scss",
-    "isEntry": true
-  },
   "resources/css/app.css": {
     "file": "assets/app.4dbdbdd9.css",
     "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/scss/app.scss": {
+    "file": "assets/app.bd772e3d.css",
+    "src": "resources/scss/app.scss",
     "isEntry": true
   }
 }
