@@ -76,40 +76,6 @@ $('#modalAdd').on('click',function(e){
                 makeAjaxRequest('add',formData)
                     .then((data)=>{
                         console.log(data);
-                        if(data[0].code == 401){
-                            Swal.fire({
-                                icon: 'warning',
-                                title: 'Error',
-                                text: 'waktu sesi anda sebagai admin telah habis, silahkan login kembali',
-                            }).then((result)=>{
-                                if (result.isConfirmed) {
-                                    formReset('modal-add','formAdd');
-                                    $('#renderKelas').html(data.html);
-                                }
-                            });
-                        }else if(data[0].code == 400){
-                            Swal.fire({
-                                icon: 'warning',
-                                title: 'Data Corrected',
-                                text: 'Opps Kelas Sudah Tersedia',
-                            }).then((result)=>{
-                                if (result.isConfirmed) {
-                                    formReset('modal-add','formAdd');
-                                    $('#renderKelas').html(data.html);
-                                }
-                            })
-                        }else if(data[0].code == 0){
-                            Swal.fire({
-                                icon: 'warning',
-                                title: 'token',
-                                text: 'Opps Tidak Valid',
-                            }).then((result)=>{
-                                if (result.isConfirmed) {
-                                    formReset('modal-add','formAdd');
-                                    $('#renderKelas').html(data.html);
-                                }
-                            })
-                        }else{
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Data Updated',
@@ -120,55 +86,67 @@ $('#modalAdd').on('click',function(e){
                                     $('#renderKelas').html(data.html);
                                 }
                             })
-                        }
-                    })
-                    .catch((erro)=>{
-                        //console.log(erro);
-                        if (erro.responseJSON) {
-
-                            //console.log(erro.responseJSON.errors);
-                            if (erro.responseJSON.errors) {
-                                const errors = erro.responseJSON.errors;
-                                let errorMessage = "";
-                                for (const key in errors) {
-                                    errorMessage += `${key}: ${errors[key][0]}\n`;
-                                }
-                                Swal.fire({
-                                    icon: 'warning',
-                                    title: 'Input Corrected',
-                                    text: errorMessage,
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        // Add any necessary actions here
-                                    }
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: 'warning',
-                                    title: 'Form',
-                                    text: 'Ada kesalahan dalam pengisian form',
-                                }).then((result) => {
-                                    // Handle user action after displaying the error message
-                                    if (result.isConfirmed) {
-                                        // Add any necessary actions here
-                                    }
-                                });
-                            }
-                        } else {
-                            // Handle error cases where no response was received from the server
+                    }).catch((error) => {
+                        // Tangani error di sini
+                        console.log('Error:', error);
+                        if (error.status === 419) {
                             Swal.fire({
-                                icon: 'warning',
-                                title: 'Proccesing Data',
-                                text: 'Ada kesalahan dalam Server',
+                                icon: 'error',
+                                title: 'Session Expired',
+                                text: 'Please reload the page and try again.',
+                            });
+                        } else if (error.status === 200) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data Updated',
+                                text: error.response.message,
                             }).then((result) => {
-                                // Handle user action after displaying the error message
                                 if (result.isConfirmed) {
-                                    // Add any necessary actions here
+                                    formReset('modal-add', 'formAdd');
+                                    $('#renderKelas').html(error.response.html);
                                 }
                             });
+                        }else if(error.status === 401){
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Error',
+                                text: 'waktu sesi anda sebagai admin telah habis, silahkan login kembali',
+                            }).then((result)=>{
+                                if (result.isConfirmed) {
+                                    formReset('modal-add','formAdd');
+                                    $('#renderKelas').html(data.html);
+                                }
+                            });
+                        }else if(error.status === 400){
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Data Corrected',
+                                text: 'Opps Kelas Sudah Tersedia',
+                            }).then((result)=>{
+                                if (result.isConfirmed) {
+                                    formReset('modal-add','formAdd');
+                                    $('#renderKelas').html(data.html);
+                                }
+                            })
+                        }else if(error.status === 0){
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'token',
+                                text: 'Opps Tidak Valid',
+                            }).then((result)=>{
+                                if (result.isConfirmed) {
+                                    formReset('modal-add','formAdd');
+                                    $('#renderKelas').html(data.html);
+                                }
+                            })
+                        }else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'An error occurred',
+                                text: error.response ? error.response.message : 'Unknown error',
+                            });
                         }
-
-                    })
+                    });
 
             })
         })
@@ -307,8 +285,22 @@ function makeAjaxRequest(mode=null, data=null){
                         timer:5000
                     })
                 },
-                success:(data)=>{resolve(data);},
-                error:(error)=>{reject(error);},
+                success: (data, textStatus, jqXHR) => {
+                    if (jqXHR.status === 200) {
+                        resolve(data);
+                    } else {
+                        reject({
+                            status: jqXHR.status,
+                            response: data
+                        });
+                    }
+                },
+                error: (jqXHR, textStatus, errorThrown) => {
+                    reject({
+                        status: jqXHR.status,
+                        response: jqXHR.responseJSON || errorThrown
+                    });
+                },
             });
         });
     }else if(mode == 'edit'){
@@ -331,8 +323,22 @@ function makeAjaxRequest(mode=null, data=null){
                         timer:4000
                     })
                 },
-                success:(data)=>{resolve(data);},
-                error:(error)=>{reject(error);},
+                success: (data, textStatus, jqXHR) => {
+                    if (jqXHR.status === 200) {
+                        resolve(data);
+                    } else {
+                        reject({
+                            status: jqXHR.status,
+                            response: data
+                        });
+                    }
+                },
+                error: (jqXHR, textStatus, errorThrown) => {
+                    reject({
+                        status: jqXHR.status,
+                        response: jqXHR.responseJSON || errorThrown
+                    });
+                },
             });
         });
     }else if(mode == 'delete'){
@@ -372,8 +378,22 @@ function makeAjaxRequest(mode=null, data=null){
                         timer:4000
                     })
                 },
-                success:function(data){resolve(data)},
-                error:function(error){reject(error)}
+                success: (data, textStatus, jqXHR) => {
+                    if (jqXHR.status === 200) {
+                        resolve(data);
+                    } else {
+                        reject({
+                            status: jqXHR.status,
+                            response: data
+                        });
+                    }
+                },
+                error: (jqXHR, textStatus, errorThrown) => {
+                    reject({
+                        status: jqXHR.status,
+                        response: jqXHR.responseJSON || errorThrown
+                    });
+                },
             })
         })
     }

@@ -71,17 +71,15 @@ class KelasController extends Controller
         // dd($dataKategori->json());
 
         if($data->status() == 202){
-            // dd($data->json());
             return view('pages.kelas.kelas',["kelas"=>$data->json(),'slug'=>$slug,'kategori'=>$dataKategori->json()]);
         }elseif($data->status() == 404){
             return view('pages.kelas.kelas',["kelas"=>[],'slug'=>$slug,'kategori'=>$dataKategori->json()]);
         }else{
-            dd($data->failed());
+            dd($data);
         }
     }
 
     public function addKelas (Request $request) {
-        dd($request->all());
         DB::beginTransaction();
         try {
             //code...
