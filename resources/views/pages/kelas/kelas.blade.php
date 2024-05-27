@@ -15,7 +15,6 @@
             </button>
           </div>
           <div id="renderKelas" class="row mt-2 container">
-              @dump($kelas)
             @forelse ($kelas as $item)
                 <div class="col-lg-3 col-6">
                 <!-- small card -->
