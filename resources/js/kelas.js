@@ -76,6 +76,11 @@ $('#modalAdd').on('click',function(e){
                 makeAjaxRequest('add',formData)
                     .then((data)=>{
                         console.log(data);
+                        if (data.redirect_url) {
+                            window.location.href = data.redirect_url;
+                        } else {
+                            console.log(data);
+                        }
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Data Updated',
@@ -113,8 +118,7 @@ $('#modalAdd').on('click',function(e){
                                 text: 'waktu sesi anda sebagai admin telah habis, silahkan login kembali',
                             }).then((result)=>{
                                 if (result.isConfirmed) {
-                                    formReset('modal-add','formAdd');
-                                    $('#renderKelas').html(data.html);
+                                    //formReset('modal-add','formAdd');
                                 }
                             });
                         }else if(error.status === 400){
@@ -124,8 +128,7 @@ $('#modalAdd').on('click',function(e){
                                 text: 'Opps Kelas Sudah Tersedia',
                             }).then((result)=>{
                                 if (result.isConfirmed) {
-                                    formReset('modal-add','formAdd');
-                                    $('#renderKelas').html(data.html);
+                                    // formReset('modal-add','formAdd');
                                 }
                             })
                         }else if(error.status === 0){
@@ -135,8 +138,7 @@ $('#modalAdd').on('click',function(e){
                                 text: 'Opps Tidak Valid',
                             }).then((result)=>{
                                 if (result.isConfirmed) {
-                                    formReset('modal-add','formAdd');
-                                    $('#renderKelas').html(data.html);
+                                    // formReset('modal-add','formAdd');
                                 }
                             })
                         }else {
