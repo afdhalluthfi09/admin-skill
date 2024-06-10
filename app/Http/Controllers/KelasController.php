@@ -105,7 +105,8 @@ class KelasController extends Controller
     public function showListKelas($slug) {
         // dd($this->youtube->getListYoutube($slug));
         return view('pages.kelas.listkelas',with([
-            'listItem' =>$this->youtube->getListItemsYoutube(),
+            'listItem' =>$this->youtube->getListItemsYoutube($slug),
+            'slug'=>$slug
         ]));
     }
     public function detailEvent()

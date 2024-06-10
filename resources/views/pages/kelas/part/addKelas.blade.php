@@ -70,10 +70,18 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>IDHASH</label>
+                                <div class="d-flex flex-column justify-end">
+                                    <div>Sudah Meliliki PLaylist ?</div>
+                                    <small>jika "belum" abaikan tombol ini</small>
+                                    <div class="d-flex flex-row">
+                                        <button type="button" id="btnSudah" class="btn btn-sm">Sudah</button>
+                                    </div>
+                                </div>
+                                <div class="form-group d-none" id="componentIdPlaylist">
+                                    <label>Play List Id</label>
                                     <input type="text" class="form-control" id="idhash" name="idhash"
-                                        placeholder="ex: id list youtube" required>
+                                        placeholder="ex: id list youtube"/>
+                                    <input hidden type="text" id="boolPlaylist" name="boolPlaylist" value="belum"/>
                                 </div>
                             </div>
                         </div>

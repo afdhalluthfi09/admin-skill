@@ -1,4 +1,6 @@
 <x-ladmin>
+    @dump(Session('user')['tokenuath'])
+    @dump($slug)
     <div class="container-fluid">
         <div class="container">
             <div class="d-flex flex-row justify-content-between mb-2">
@@ -16,7 +18,7 @@
 
             <div class="video-list-container">
                 <div class="d-flex flex-row justify-content-between">
-                    <button class="btn btn-success btn-sm mb-2 btn-dowload-web">Dowload Materi</button>
+                    <button class="btn btn-success btn-sm mb-2 btn-dowload-web">Dowload Materis</button>
                     <button id="btn-upload" class="btn btn-success btn-sm mb-2 btn-dowload-web">Upload Video Materi</button>
                 </div>
                 @forelse ($listItem as $item)

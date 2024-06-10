@@ -6,8 +6,19 @@ use Illuminate\Support\Facades\Http;
 
 class Youtube
 {
+    private $var;
 
 
+    private function initialize()
+    {
+        $userSession = session('user');
+        if ($userSession && isset($userSession['tokenuath'])) {
+            $this->var = json_decode($userSession['tokenuath']);
+        } else {
+            // Handle case where session is not set or does not contain 'tokenuath'
+            $this->var = null;
+        }
+    }
     public function getListYoutube($request)
     {
         $response =Http::withHeaders([
@@ -68,9 +79,9 @@ class Youtube
 
         }
     }
-    public function getListItemsYoutube()
+    public function getListItemsYoutube($slug)
     {
-        $response =Http::withHeaders([
+        /* $response =Http::withHeaders([
             'Accept'=>'appplication/json',
         ])
         ->get('https://www.googleapis.com/youtube/v3/playlistItems',[
@@ -79,6 +90,19 @@ class Youtube
             'key'=>'AIzaSyA1dXY9lPe9zi264_4TzJ6D_DQu344xV8k',
             'maxResults'=>5
 
+        ]); */
+        $this->initialize();
+        if ($this->var === null) {
+            return response()->json(['error' => 'Token not found'], 401);
+        }
+        $accessToken =json_decode(session('user')['tokenuath']);
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . $this->var->access_token,
+        ])->get('https://www.googleapis.com/youtube/v3/playlistItems', [
+            'part' => 'contentDetails,snippet,status',
+            'playlistId' => $slug,  // Ganti dengan ID playlist yang sesuai
+            'maxResults' => 5
         ]);
         if($response->successful()){
             return $response->collect(['items']);
@@ -89,11 +113,17 @@ class Youtube
 
     public function playVideo ($request)
     {
-        $response = Http::withHeaders([ 'Accept'=> 'application/json'])
-            ->get('https://www.googleapis.com/youtube/v3/videos',[
+        $this->initialize();
+        if ($this->var === null) {
+            return response()->json(['error' => 'Token not found'], 401);
+        }
+
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . $this->var->access_token,
+        ])->get('https://www.googleapis.com/youtube/v3/videos',[
                 'part'=>'snippet,contentDetails,statistics,player',
                 'id'=>$request,
-                'key'=>'AIzaSyA1dXY9lPe9zi264_4TzJ6D_DQu344xV8k'
             ]);
 
         if($response->successful()){

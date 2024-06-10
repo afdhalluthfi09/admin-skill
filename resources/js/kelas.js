@@ -9,6 +9,8 @@ $('#modalAdd').on('click',function(e){
             $('#modal-content-add').html(data.html)
             let inputGuru =document.getElementById('guru');
             let inputNameProfile =document.getElementById('namaPemateri');
+
+            $('#btnSudah').addClass('active');
             $('#summernote').summernote({
                 placeholder: 'Isi Disnini',
                 tabsize: 2,
@@ -154,6 +156,13 @@ $('#modalAdd').on('click',function(e){
         })
         .fail((error)=>{console.log(error);})
 
+})
+
+$('#modal-content-add').on('click','#btnSudah',function(e){
+    e.preventDefault();
+    $('#componentIdPlaylist').toggleClass('d-none');
+    $(this).addClass('active');
+    $('#btnBelum').removeClass('active');
 })
 
 // btn-delete
