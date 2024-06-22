@@ -118,6 +118,22 @@
                         });
                         $('.main-video-container .slip').html(response.data[0].player.embedHtml);
                         $('.main-video-container').find('iframe').addClass('main-video');
+
+                        let iframe = document.querySelector('.main-video-container iframe');
+                        iframe.classList.add('main-video');
+
+                        // Tambahkan overlay untuk mencegah klik kanan pada container video
+                        let videoContainer = document.querySelector('.main-video-container');
+                        videoContainer.classList.add('main-video-container-with-overlay'); // Tambahkan kelas untuk posisi relatif
+
+                        let overlay = document.createElement('div');
+                        overlay.classList.add('main-video-overlay');
+                        videoContainer.appendChild(overlay);
+
+                        // Tambahkan event listener ke overlay untuk mencegah klik kanan
+                        overlay.addEventListener('contextmenu', function(e) {
+                            e.preventDefault();
+                        });
                         console.log(response.data[0].player.embedHtml);
                     } catch (error) {
                         console.log(error);
