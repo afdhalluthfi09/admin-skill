@@ -10,21 +10,19 @@
         </div>
         <div class="container-playlist-video">
             <div class="main-video-container">
-                <div class="slip">
-
-                </div>
-               <h3 class="main-vid-title">Mulai Dengan List Video Anda</h3>
+                <div class="slip"></div>
+                <h3 class="main-vid-title">Mulai Dengan List Video Anda</h3>
             </div>
 
             <div class="video-list-container">
                 <div class="d-flex flex-row justify-content-between">
-                    <button class="btn btn-success btn-sm mb-2 btn-dowload-web">Dowload Materis</button>
+                    <button class="btn btn-success btn-sm mb-2 btn-dowload-web">Download Materi</button>
                     <button id="btn-upload" class="btn btn-success btn-sm mb-2 btn-dowload-web">Upload Video Materi</button>
                 </div>
                 @forelse ($listItem as $item)
                     <div class="list" data-playid="{{$item['contentDetails']['videoId']}}">
-                    <img src="{{$item["snippet"]["thumbnails"]["high"]["url"]}}" class="list-video"/>
-                    <h3 class="list-title">{{$item["snippet"]["title"]}}</h3>
+                        <img src="{{$item['snippet']['thumbnails']['high']['url']}}" class="list-video"/>
+                        <h3 class="list-title">{{$item['snippet']['title']}}</h3>
                     </div>
                 @empty
                     <div class="list">
@@ -32,9 +30,9 @@
                     </div>
                 @endforelse
             </div>
-
         </div>
     </div>
+
     <x-modals.modal type='modal-add' judul='Upload materi Video' class="modal-lg">
         <div id="modal-content-add">
             <form id="form-upload" action="" enctype='multipart/form-data'>
@@ -50,13 +48,13 @@
 
                 let csrfToken = $('meta[name="csrf-token"]').attr('content');
                 let baseUrl = "http://sekolahskillapi.test/api";
+                var iframe = null;
                 console.log(baseUrl);
 
 
                 $('.video-list-container .list').on('click', function() {
                     $('.video-list-container .list').removeClass('active');
                     $(this).addClass('active');
-                    let src = $(this).find('.list-video').attr('src');
                     let title = $(this).find('.list-title').html();
                     getEmbed($(this).data('playid'));
                     $('.main-video-container .main-vid-title').html(title);
@@ -110,38 +108,47 @@
                     try {
                         let response = await $.ajax({
                             type: "POST",
-                            url: "{!! route('kelas.video.player',['idplaylist' => ':playid']) !!}".replace(':playid',playid),
+                            url: "{!! route('kelas.video.player', ['idplaylist' => ':playid']) !!}".replace(':playid', playid),
                             data: {
                                 _token: csrfToken
                             },
                             dataType: "json"
                         });
-                        $('.main-video-container .slip').html(response.data[0].player.embedHtml);
-                        $('.main-video-container').find('iframe').addClass('main-video');
 
-                        let iframe = document.querySelector('.main-video-container iframe');
-                        iframe.classList.add('main-video');
+                        if (response.data.original.html) {
+                            // Menampilkan HTML yang diterima dari server
+                            $('.main-video-container .slip').html(response.data.original.html);
 
-                        // Tambahkan overlay untuk mencegah klik kanan pada container video
-                        let videoContainer = document.querySelector('.main-video-container');
-                        videoContainer.classList.add('main-video-container-with-overlay'); // Tambahkan kelas untuk posisi relatif
+                            iframe = $('.main-video-container').find('iframe');
+                            iframe.addClass('main-video');
 
-                        let overlay = document.createElement('div');
-                        overlay.classList.add('main-video-overlay');
-                        videoContainer.appendChild(overlay);
+                            // Menambahkan atribut dan mencegah klik kanan
+                            iframe.attr('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;');
 
-                        // Tambahkan event listener ke overlay untuk mencegah klik kanan
-                        overlay.addEventListener('contextmenu', function(e) {
-                            e.preventDefault();
-                        });
-                        console.log(response.data[0].player.embedHtml);
+                            // Menonaktifkan klik kanan pada iframe
+                            /* iframe.on('load', function() {
+                                iframe.contents().on('contextmenu', function(e) {
+                                    e.preventDefault();
+                                });
+                            }); */
+
+                        } else {
+                            console.error('No HTML received from server');
+                        }
                     } catch (error) {
                         console.log(error);
                     }
                 }
 
+                iframe.on('contextmenu', function(e) {
+                                e.preventDefault();
+                            });
+
+                            console.log(iframe);
+
+
+
                 $('#btn-upload').on('click', function() {
-                    console.log('hehehe');
                     $('#modal-add').modal('show');
                 });
 

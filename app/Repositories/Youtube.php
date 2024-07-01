@@ -111,7 +111,7 @@ class Youtube
         }
     }
 
-    public function playVideo ($request)
+    public function playVideos ($request)
     {
         $this->initialize();
         if ($this->var === null) {
@@ -132,4 +132,40 @@ class Youtube
             return $response->failed();
         }
     }
+
+    public function playVideo($request)
+{
+    // Inisialisasi
+    $this->initialize();
+
+    // Periksa apakah token ada
+    if ($this->var === null) {
+        return response()->json(['error' => 'Token not found'], 401);
+    }
+
+    // Kirim permintaan ke API YouTube
+    $response = Http::withHeaders([
+        'Accept' => 'application/json',
+        'Authorization' => 'Bearer ' . $this->var->access_token,
+    ])->get('https://www.googleapis.com/youtube/v3/videos', [
+        'part' => 'player',
+        'id' => $request,
+    ]);
+
+    // Periksa apakah permintaan berhasil
+    if ($response->successful()) {
+        $items = $response->collect('items');
+        if ($items->isEmpty()) {
+            return response()->json(['error' => 'Video not found'], 404);
+        }
+
+        $player = $items[0]['player']['embedHtml'];
+
+        return response()->json(['html' => $player]);
+    } else {
+        return response()->json(['error' => 'Failed to retrieve video data'], $response->status());
+    }
+}
+
+
 }
