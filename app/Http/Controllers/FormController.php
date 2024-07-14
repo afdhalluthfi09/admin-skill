@@ -55,4 +55,29 @@ class FormController extends Controller
         $render = view('pages.artikel.addartikel')->render();
         return response()->json(["html"=>$render],Response::HTTP_ACCEPTED);
     }
+    public function formEditArtikel ($id) {
+
+        /*
+            $response = Http::post(config('services.api.local').'/admin/login', [
+                    'email' => $request->email,
+                    'password' =>$request->password
+                ]);
+                $data =$response->json();
+                // dd($data);
+                $dataResponse =$data["data"];
+        */
+        $singleArtikel=Http::acceptJson()->post(config('services.api.local').'/artikel'.'/single',[
+            "id"=>$id,
+            "mode"=>'single'
+        ]);
+        $data =$singleArtikel->json();
+
+        // dd($data);
+        View::composer('pages.artikel.editartikel',function($view)use($data){
+            // dd($dataDeatilKelas);
+            $view->with(['artikel'=>$data]);
+        });
+        $render = view('pages.artikel.editartikel')->render();
+        return response()->json(["html"=>$render],Response::HTTP_ACCEPTED);
+    }
 }

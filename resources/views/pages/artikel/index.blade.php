@@ -23,7 +23,8 @@
                           <span class="info-box-text">{{$art->judul}}</span>
                           <span class="info-box-number">{{$art->kategori}}</span>
                           <div class="d-flex">
-                            <a href="{{ route('artikel.edit', ['slug'=>$art->slug]) }}" class="badge text-bg-primary">edit</a>
+                            {{-- href="{{ route('artikel.edit', ['slug'=>$art->slug]) }}" --}}
+                            <a role="button" type="button"  data-id="{{$art->id}}"  class="badge text-bg-primary editArtikel">edit</a>
                             <a role="button"  class="badge text-bg-danger btn-hapus" data-toggle="modal" data-id="{{$art->id}}">hapus</a>
                           </div>
                         </div>

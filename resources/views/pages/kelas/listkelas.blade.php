@@ -58,6 +58,7 @@
                     let title = $(this).find('.list-title').html();
                     getEmbed($(this).data('playid'));
                     $('.main-video-container .main-vid-title').html(title);
+
                     console.log($(this).data('playid'));
                 });
 
@@ -121,16 +122,19 @@
 
                             iframe = $('.main-video-container').find('iframe');
                             iframe.addClass('main-video');
+                            $('.main-video-container .slip iframe').on('load', function() {
+                                // Mengakses isi dokumen di dalam iframe
+                                let iframeDocument = $(this).contents();
+                                console.log('ssss');
+                                console.log(iframeDocument);
 
-                            // Menambahkan atribut dan mencegah klik kanan
-                            iframe.attr('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;');
-
-                            // Menonaktifkan klik kanan pada iframe
-                            /* iframe.on('load', function() {
-                                iframe.contents().on('contextmenu', function(e) {
+                                // Menambahkan event listener untuk menonaktifkan klik kanan
+                                iframeDocument.on('contextmenu', function(e) {
                                     e.preventDefault();
+                                    console.log('Klik kanan dinonaktifkan di dalam iframe');
                                 });
-                            }); */
+                            });
+
 
                         } else {
                             console.error('No HTML received from server');
@@ -140,16 +144,15 @@
                     }
                 }
 
-                iframe.on('contextmenu', function(e) {
-                                e.preventDefault();
-                            });
-
-                            console.log(iframe);
 
 
-
+                //.ytp-popup .ytp-contextmenu
                 $('#btn-upload').on('click', function() {
                     $('#modal-add').modal('show');
+                });
+
+                $(document).on('contextmenu', function(e) {
+                    e.preventDefault();
                 });
 
 

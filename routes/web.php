@@ -94,6 +94,7 @@ Route::group(["prefix"=>'form',"middleware"=>[AuthChek::class]],function(){
     Route::get('add-kelas',[FormController::class,'formAddKelas']);
     Route::get('add-user',[FormController::class,'formAddUser']);
     Route::get('add-artikel',[FormController::class,'formAddArtikel']);
+    Route::get('edit-artikel/{id}',[FormController::class,'formEditArtikel']);
 });
 
 Route::group(["prefix"=>'event',"middleware"=>[AuthChek::class]],function(){

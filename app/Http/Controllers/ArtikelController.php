@@ -15,7 +15,7 @@ class ArtikelController extends Controller
         $this->artikel = $artikel;
     }
 
-    public function index () 
+    public function index ()
     {
 
         return view('pages.artikel.index',with([
@@ -35,14 +35,15 @@ class ArtikelController extends Controller
 
     public function add (Request $request) {
         // dd($request->all());
-        
+
+
         $this->artikel->add($request);
 
         return redirect()->route('artikel')->with('success', 'Artikel berhasil ditambahkan');
     }
     public function edit (Request $request,$id) {
         // dd($request->all());
-        
+
         $this->artikel->edit($request,$id);
 
         return redirect()->route('artikel')->with('success', 'Artikel berhasil diubah');
